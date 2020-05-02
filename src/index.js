@@ -1,11 +1,13 @@
-import app from './app';
+import express, { json, urlencoded } from 'express';
+import { config } from 'dotenv';
+import logger from 'morgan';
+import debug from 'debug';
 
-const startApp = async () => {
-  const header = document.querySelector('[data-app-name]');
-  if (!header) return;
-
-  const programName = await app();
-  header.textContent = programName;
-};
-
-document.addEventListener('DOMContentLoaded', startApp);
+config();
+const { PORT } = process.env;
+const log = debug('dev');
+const app = express();
+app.use(logger('dev'));
+app.use(json());
+app.use(urlencoded({ extended: false }));
+app.listen(PORT, () => log(`App listening on port ${PORT}!`));

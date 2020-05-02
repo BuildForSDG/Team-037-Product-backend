@@ -17,7 +17,12 @@
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
     "lint": "eslint \"src/**/*.js\"",
-    "start": "parcel ./src/index.html"
+    "start": "cross-env NODE_ENV=production babel-node src",
+    "dev": "cross-env DEBUG=dev nodemon --exec babel-node src",
+    "db:ready": "npm-run-all db:undo db:migrate db:seed",
+    "db:migrate": "sequelize db:migrate",
+    "db:undo": "sequelize db:migrate:undo:all",
+    "db:seed": "sequelize db:seed:all"
   },
   "author": {
     "name": "Build For SDG",
@@ -32,16 +37,30 @@
     "url": "https://github.com/BuildForSDG/js-starter/issues"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@babel/register": "^7.9.0",
+    "cross-env": "^7.0.2",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.3",
+    "pg": "^8.0.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.7"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
     "babel-jest": "^25.4.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "jest": "^25.4.0",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "sequelize-cli": "^5.5.1"
   },
   "browserslist": [
     "last 1 Chrome versions"
