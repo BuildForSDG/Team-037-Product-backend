@@ -3,11 +3,9 @@ module.exports = {
     id: {
       allowNull: false,
       primaryKey: true,
-      type: Sequelize.UUID
-    },
-    socialId: {
-      allowNull: true,
-      type: Sequelize.STRING
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      unique: true
     },
     firstName: {
       allowNull: false,
@@ -22,25 +20,25 @@ module.exports = {
       unique: true,
       type: Sequelize.STRING
     },
-    password: {
-      allowNull: false,
-      type: Sequelize.STRING
-    },
     phone: {
       allowNull: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     country: {
-      allowNull: true,
+      type: Sequelize.STRING
+    },
+    socialId: {
       type: Sequelize.STRING
     },
     state: {
-      allowNull: true,
+      type: Sequelize.STRING
+    },
+    address: {
       type: Sequelize.STRING
     },
     userType: {
       allowNull: false,
-      type: Sequelize.STRING
+      type: Sequelize.ENUM(['sponsor', 'user', 'admin', 'super_admin'])
     },
     verified: {
       allowNull: false,
@@ -48,15 +46,12 @@ module.exports = {
       defaultValue: false
     },
     dateOfBirth: {
-      allowNull: false,
-      type: Sequelize.DATEONLY
+      type: Sequelize.STRING
     },
     imageUrl: {
-      allowNull: true,
       type: Sequelize.STRING
     },
     city: {
-      allowNull: true,
       type: Sequelize.STRING
     },
     createdAt: {
