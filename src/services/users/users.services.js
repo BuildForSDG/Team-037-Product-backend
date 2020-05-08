@@ -19,7 +19,6 @@ export const findUser = async (item) => {
   return user;
 };
 
-
 export const saveUser = async (body) => {
   try {
     const user = await User.create(body);
@@ -34,7 +33,7 @@ export const savePassword = async (password, userId) => {
     const hash = await Security.generateNewPassword(password);
     return await passwordManager.create({
       userId,
-      current_password: hash
+      current_password: hash,
     });
   } catch (error) {
     return error;

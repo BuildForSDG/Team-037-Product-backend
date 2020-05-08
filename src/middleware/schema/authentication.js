@@ -19,3 +19,8 @@ export const authenticationSchema = Joi.object({
 });
 
 export const editUserProfile = Joi.object({});
+
+export const loginSchema = Joi.object({
+  username: email.required(),
+  password
+});
