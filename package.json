@@ -51,7 +51,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.1",
+<<<<<<< HEAD
     "googleapis": "^50.0.0",
+=======
+>>>>>>> 6ee353481d0be955a24e15c92972a4c23d97470a
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
