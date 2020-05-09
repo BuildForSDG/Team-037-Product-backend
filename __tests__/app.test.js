@@ -6,7 +6,7 @@ describe('app module', () => {
   });
 
   test('it returns program name with SDGs', async () => {
-    const result = await app();
+    const result = await app;
     const sdgPos = (result || '').indexOf('SDG');
     expect(sdgPos).toBeGreaterThanOrEqual(0);
   });
