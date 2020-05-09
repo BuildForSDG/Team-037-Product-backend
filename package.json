@@ -13,7 +13,8 @@
     "test": "__tests__"
   },
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test  jest",
+    "pretest": "NODE_ENV=test npm run db:reset",
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
     "lint": "eslint \"src/**/*.js\"",
@@ -21,8 +22,11 @@
     "dev": "cross-env DEBUG=dev nodemon --exec babel-node src",
     "db:ready": "npm-run-all db:undo db:migrate db:seed",
     "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all",
     "db:undo": "sequelize db:migrate:undo:all",
-    "db:seed": "sequelize db:seed:all"
+    "db:seed": "sequelize db:seed:all",
+    "undo:seeder": "node_modules/.bin/sequelize db:seed:undo:all && npm run seed",
+    "db:reset": "npm run db:migrate:undo && npm run db:migrate"
   },
   "author": {
     "name": "Build For SDG",
@@ -39,16 +43,22 @@
   "license": "MIT",
   "dependencies": {
     "@babel/register": "^7.9.0",
+    "@hapi/joi": "^17.1.1",
+    "@hapi/joi-date": "^2.0.1",
+    "bcrypt": "^4.0.1",
     "cross-env": "^7.0.2",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.7"
+    "sequelize": "^5.21.7",
+    "supertest": "^4.0.2",
+    "validator": "^13.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
