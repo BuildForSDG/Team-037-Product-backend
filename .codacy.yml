@@ -1,0 +1,15 @@
+---
+engines:
+ rubocop:
+   exclude_paths:
+     - config/engines.yml
+ duplication:
+   exclude_paths:
+    - '**/__tests__/' 
+    - '**/database/**'
+ metric:
+   exclude_paths:
+     - config/engines.yml
+ coverage:
+   exclude_paths:
+     - config/engines.yml

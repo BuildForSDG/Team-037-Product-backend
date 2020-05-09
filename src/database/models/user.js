@@ -6,34 +6,43 @@ export default (sequelize, DataTypes) => {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4
-      },
-      socialId: {
-        type: DataTypes.STRING
+        defaultValue: DataTypes.UUIDV4,
+        unique: true
       },
       firstName: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       },
       lastName: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       },
       email: {
-        type: DataTypes.STRING
-      },
-      password: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
       },
       phone: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
       },
       country: {
+        type: DataTypes.STRING
+      },
+      socialId: {
         type: DataTypes.STRING
       },
       state: {
         type: DataTypes.STRING
       },
-      userType: {
+      address: {
         type: DataTypes.STRING
+      },
+      userType: {
+        type: DataTypes.ENUM(['sponsor', 'user', 'admin', 'super_admin']),
+        defaultValue: 'user'
+
       },
       imageUrl: {
         type: DataTypes.STRING
@@ -42,16 +51,18 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       verified: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
       },
       dateOfBirth: {
-        type: DataTypes.DATEONLY
+        type: DataTypes.STRING
       }
     },
     {}
   );
-  User.associate = () => {
-
+  User.associate = (models) => {
+    const { passwordManager } = models;
+    User.hasOne(passwordManager, { foreignKey: 'id' });
   };
   return User;
 };

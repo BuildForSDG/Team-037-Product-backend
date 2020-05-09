@@ -1,6 +1,4 @@
-import { config } from 'dotenv';
-
-config();
+require('dotenv').config();
 
 export const development = {
   use_env_variable: 'DATABASE_URL_DEV',
