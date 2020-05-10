@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.JSONB
       },
       createdAt: {
         allowNull: false,
