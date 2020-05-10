@@ -1,4 +1,4 @@
-import { Op } from 'Sequelize';
+import { Op } from 'sequelize';
 import validator from 'validator';
 import models from '../../database/models';
 import Security from '../../utils/security';
@@ -33,7 +33,7 @@ export const savePassword = async (password, userId) => {
     const hash = await Security.generateNewPassword(password);
     return await passwordManager.create({
       userId,
-      current_password: hash,
+      current_password: hash
     });
   } catch (error) {
     return error;

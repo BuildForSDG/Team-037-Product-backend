@@ -5,8 +5,9 @@ engines:
      - config/engines.yml
  duplication:
    exclude_paths:
-    - '**/__tests__/**' 
-    - '**/database/**'
+     - '**/__tests__/**' 
+     - '**/__tests__/auth.test.js'
+     - '**/database/**'
  metric:
    exclude_paths:
      - config/engines.yml
