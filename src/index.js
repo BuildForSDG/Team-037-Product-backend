@@ -2,6 +2,7 @@ import express, { json, urlencoded } from 'express';
 import 'dotenv/config';
 import logger from 'morgan';
 import debug from 'debug';
+import expressUpload from 'express-fileupload';
 import routes from './routes/index';
 
 const log = debug('dev');
@@ -11,6 +12,7 @@ app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use('/api/v1/', routes);
+app.use(expressUpload({ useTempFiles: true }));
 
 const PORT = process.env.PORT || 7000;
 app.set('port', PORT);

@@ -1,4 +1,4 @@
-import { Op } from 'Sequelize';
+import { Op } from 'sequelize';
 import validator from 'validator';
 import models from '../../database/models';
 import Security from '../../utils/security';

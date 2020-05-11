@@ -15,7 +15,8 @@ export const authenticationSchema = Joi.object({
   state: Joi.string(),
   address: Joi.string().required(),
   city: Joi.string(),
-  dateOfBirth
+  dateOfBirth,
+  confirmationType: list(['SMS', 'EMAIL']).required()
 });
 
 export const editUserProfile = Joi.object({});
