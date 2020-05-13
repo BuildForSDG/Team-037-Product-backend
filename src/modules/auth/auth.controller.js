@@ -34,7 +34,6 @@ export const makeDonation = async (req, res) => {
     const data = (event.event === 'charge.success')
       ? {
         amount: event.data.amount,
-        userId: event.data.metadata.custom_fields[0].value,
         description: event
       }
       : false;

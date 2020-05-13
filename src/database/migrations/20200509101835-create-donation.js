@@ -8,15 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userid: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        field: 'user_id',
-        reference: {
-          model: 'Users',
-          key: 'id'
-        }
-      },
       amount: {
         type: Sequelize.DOUBLE,
         allowNull: false
