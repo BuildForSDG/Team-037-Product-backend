@@ -12,7 +12,7 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use('/api/v1/', routes);
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8000;
 app.set('port', PORT);
 app.listen(PORT, () => log(`App listening on port ${PORT}!`));
 

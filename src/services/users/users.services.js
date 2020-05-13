@@ -1,4 +1,4 @@
-import { Op } from 'Sequelize';
+import { Op } from 'sequelize';
 import validator from 'validator';
 import models from '../../database/models';
 import Security from '../../utils/security';
@@ -18,7 +18,6 @@ export const findUser = async (item) => {
   const user = await User.findOne(where);
   return user;
 };
-
 
 export const saveUser = async (body) => {
   try {

@@ -35,4 +35,15 @@ export const conflict = {
   address: '23 oduwaye lagos',
   phone: '0344652114'
 };
+
+export const loginUser = {
+  username: 'gabteezy@gmail.com',
+  password: 'qwertyQ123@'
+};
+
+export const wrongloginUser = {
+  username: 'gabteezy@gmail.com',
+  password: 'qwertyQ123'
+};
 export const baseUrl = '/api/v1/auth/createUser';
+export const baseUrlLogin = '/api/v1/auth/signIn';
