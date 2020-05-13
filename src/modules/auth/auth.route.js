@@ -1,6 +1,6 @@
 import express from 'express';
 import { createUser } from './auth.controller';
-import { logInUser, getLoginUrlFromGoogle } from './signin_user'l
+import { logInUser, getLoginUrlFromGoogle } from './signin_user';
 
 import { validateInput } from '../../middleware/schema/schemaValidation';
 import { authenticationSchema, loginSchema } from '../../middleware/schema/authentication';
