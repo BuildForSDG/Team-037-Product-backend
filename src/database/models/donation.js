@@ -16,13 +16,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  Donation.associate = (models) => {
-    // associations can be defined here
-    // Donation.belongsTo(models.User, {
-    //   targetKey: 'id',
-    //   foreignKey: 'donationId',
-    //   onDelete: 'CASCADE'
-    // });
-  };
   return Donation;
 };
