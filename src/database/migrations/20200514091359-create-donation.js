@@ -9,11 +9,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       amount: {
-        type: Sequelize.DOUBLE,
-        allowNull: false
+        type: Sequelize.DOUBLE
       },
       description: {
-        type: Sequelize.JSONB
+        type: Sequelize.STRING,
+        defaultValue: 'Donation'
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      firstname: {
+        type: Sequelize.STRING
+      },
+      lastname: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -2,16 +2,6 @@ import models from '../../database/models';
 
 const { Donation } = models;
 
-
-export const saveUser = async (body) => {
-  try {
-    const user = await Donation.create(body);
-    return user;
-  } catch (error) {
-    return error;
-  }
-};
-
 export const saveDonation = async (body) => {
   // {userid: u, amount: a, description: d}
   try {
@@ -23,3 +13,5 @@ export const saveDonation = async (body) => {
     return error;
   }
 };
+
+export const deleteDonation = async () => {};
