@@ -1,7 +1,8 @@
 import express from 'express';
-import authRoute from '../modules/auth/auth.route';
+import authRoute from './auth.route';
+import donationRoute from './donation.route';
 
 const routes = express.Router();
-routes.use(authRoute);
+routes.use('/', authRoute, donationRoute);
 
 export default routes;

@@ -1,6 +1,6 @@
 import supertest from 'supertest';
-import app from '../src/index';
-import * as mocks from '../src/modules/auth/__mocks___/index';
+import app from '../src';
+import * as mocks from './__mocks___';
 import {
   SUCCESS, ALREADY_EXIST, LOGIN_SUCCESS, INVALID_USER
 } from '../src/utils/constant';
@@ -64,7 +64,7 @@ describe('AUTH LOGIN IN API', () => {
   it('should login user', (done) => {
     request
       .post(mocks.baseUrlLogin)
-      .send(mocks.wrongloginUser)
+      .send(mocks.wrongLoginUser)
       .end((err, res) => {
         if (err) done(err);
         expect(res.statusCode).toEqual(401);

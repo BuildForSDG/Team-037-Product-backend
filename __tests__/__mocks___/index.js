@@ -41,7 +41,7 @@ export const loginUser = {
   password: 'qwertyQ123@'
 };
 
-export const wrongloginUser = {
+export const wrongLoginUser = {
   username: 'gabteezy@gmail.com',
   password: 'qwertyQ123'
 };
