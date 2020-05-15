@@ -18,8 +18,4 @@ export const createUser = async (req, res) => {
     return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
   }
 };
-
-export const signInUser = async () => {
-
-
-};
+export const signInUser = async () => { };
