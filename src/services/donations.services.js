@@ -1,8 +1,8 @@
-import models from '../../database/models';
+import models from '../database/models';
 
 const { Donation } = models;
 
-export const saveDonation = async (body) => {
+export const addDonation = async (body) => {
   try {
     const donation = await Donation.create(body);
     return { status: 201, data: donation };

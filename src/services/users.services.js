@@ -1,10 +1,9 @@
 import { Op } from 'sequelize';
 import validator from 'validator';
-import models from '../../database/models';
-import Security from '../../utils/security';
+import models from '../database/models';
+import Security from '../utils/security';
 
 const { User, passwordManager } = models;
-
 
 export const findUser = async (item) => {
   let where = {

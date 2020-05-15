@@ -1,16 +1,35 @@
-import { findUser } from '../../services/users/users.services';
-import Security from '../../utils/security';
-import { urlGoogle } from '../../utils/google_config';
-import { SERVER_ERROR_MESSAGE, LOGIN_SUCCESS, INVALID_USER } from '../../utils/constant';
+import { saveUser, savePassword, findUser } from '../services/users.services';
+import Security from '../utils/security';
+import { urlGoogle } from '../utils/google_config';
+import {
+  SERVER_ERROR_MESSAGE, SUCCESS, LOGIN_SUCCESS, INVALID_USER
+} from '../utils/constant';
 import 'dotenv/config';
+
+export const createUser = async (req, res) => {
+  try {
+    const { password } = req.body;
+    const user = await saveUser(req.body);
+    const { id, email, userType } = user;
+    await savePassword(password, id);
+
+    const jwtToken = await Security.generateNewToken({ id, email, userType });
+
+    return res.status(201).json({
+      status: 200, message: SUCCESS, data: { user, jwtToken }
+    });
+  } catch (error) {
+    return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
+  }
+};
 
 export const logInUser = async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await findUser(username);
     if (user) {
-      const isValidpassword = await Security.comparePassword(password, user.id);
-      if (isValidpassword) {
+      const isValidPassword = await Security.comparePassword(password, user.id);
+      if (isValidPassword) {
         const jwtToken = await Security.generateNewToken({
           id: user.id,
           email: user.email,

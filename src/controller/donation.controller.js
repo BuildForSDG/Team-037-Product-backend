@@ -1,4 +1,4 @@
-import { addDonation } from '../../services/donations/donations.services';
+import { addDonation } from '../services/donations.services';
 
 const crypto = require('crypto');
 
@@ -13,8 +13,8 @@ export const makeDonation = async (req, res) => {
       ? {
         amount: event.data.amount,
         email: event.data.customer.email,
-        firstname: event.data.customer.first_name,
-        lastname: event.data.customer.last_name,
+        firstName: event.data.customer.first_name,
+        lastName: event.data.customer.last_name,
         phone: event.data.customer.phone,
         description: event.data.status
       }
