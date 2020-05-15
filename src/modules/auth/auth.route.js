@@ -1,5 +1,6 @@
 import express from 'express';
-import { createUser, makeDonation } from './auth.controller';
+import { createUser } from './auth.controller';
+import { makeDonation } from './donation.controller';
 import { validateInput } from '../../middleware/schema/schemaValidation';
 import { authenticationSchema } from '../../middleware/schema/authentication';
 import { emailPhoneValiator } from '../../middleware/validation/index';
