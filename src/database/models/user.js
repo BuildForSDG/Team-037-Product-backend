@@ -53,6 +53,15 @@ export default (sequelize, DataTypes) => {
       },
       dateOfBirth: {
         type: DataTypes.STRING
+      },
+      accountName: {
+        type: DataTypes.STRING
+      },
+      accountNumber: {
+        type: DataTypes.STRING
+      },
+      bankName: {
+        type: DataTypes.STRING
       }
     },
     {}

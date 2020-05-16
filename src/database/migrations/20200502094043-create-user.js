@@ -61,6 +61,15 @@ module.exports = {
     updatedAt: {
       allowNull: false,
       type: Sequelize.DATE
+    },
+    accountName: {
+      type: Sequelize.STRING
+    },
+    accountNumber: {
+      type: Sequelize.STRING
+    },
+    bankName: {
+      type: Sequelize.STRING
     }
   }),
   down: (queryInterface) => queryInterface.dropTable('Users')
