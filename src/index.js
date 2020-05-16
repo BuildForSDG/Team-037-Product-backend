@@ -3,7 +3,8 @@ import 'dotenv/config';
 import logger from 'morgan';
 import debug from 'debug';
 import expressUpload from 'express-fileupload';
-import routes from './routes/index';
+// import routes from './routes/index';
+import routes from './routes';
 
 const log = debug('dev');
 const app = express();
@@ -11,10 +12,10 @@ const app = express();
 app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
-app.use('/api/v1/', routes);
 app.use(expressUpload({ useTempFiles: true }));
+app.use('/api/v1', routes);
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8000;
 app.set('port', PORT);
 app.listen(PORT, () => log(`App listening on port ${PORT}!`));
 

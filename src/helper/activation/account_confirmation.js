@@ -5,6 +5,7 @@ import sendNotificationEmail from '../notifications/sendEmailNotificationMessage
 
 const { Activation } = database;
 
+
 const accountConfirmationHelper = async (confirmationType, data, emailOrSMSType) => {
   let ACTIVATION_SENT_TO;
   switch (confirmationType) {
@@ -12,16 +13,14 @@ const accountConfirmationHelper = async (confirmationType, data, emailOrSMSType)
       const token = crypto({ length: 16 });
       ACTIVATION_SENT_TO = 'email';
       Activation.create({ userId: data.id, token });
-      const mail = await sendNotificationEmail(data.email, token, data, emailOrSMSType);
-      console.log('>>>>>>>mailResut', mail);
+      await sendNotificationEmail(data.email, token, data, emailOrSMSType);
       break;
     }
     default: {
       const token = crypto({ length: 16 });
       ACTIVATION_SENT_TO = 'email';
       Activation.create({ userId: data.id, token });
-      const mail = await sendNotificationEmail(data.email, token, data, emailOrSMSType);
-      console.log('>>>>>>>mailResut', mail);
+      await sendNotificationEmail(data.email, token, data, emailOrSMSType);
       break;
     }
   }

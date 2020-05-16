@@ -5,10 +5,10 @@ engines:
      - config/engines.yml
  duplication:
    exclude_paths:
-    - '**/__tests__/**' 
-    - '**/__tests__/auth.test' 
-
-    - '**/database/**'
+     - '**/__tests__/**' 
+     - '**/__tests__/auth.test.js'
+     - '**/helper/**'
+     - '**/database/**'
  metric:
    exclude_paths:
      - config/engines.yml

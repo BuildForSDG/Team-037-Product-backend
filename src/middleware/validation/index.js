@@ -1,7 +1,7 @@
-import { findUser } from '../../services/users/users.services';
+import { findUser } from '../../services/users.services';
 import { ALREADY_EXIST, SERVER_ERROR_MESSAGE } from '../../utils/constant';
 
-export const emailPhoneValiator = async (req, res, next) => {
+export const emailPhoneValidator = async (req, res, next) => {
   try {
     const { email, phone } = req.body;
 
@@ -14,7 +14,6 @@ export const emailPhoneValiator = async (req, res, next) => {
     }
     return next();
   } catch (error) {
-    console.log('>>>>>>', error);
     return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
   }
 };

@@ -73,7 +73,7 @@ const accountConfirmationEmailMessage = (data, link) => `
 <tr style="padding:0; vertical-align:top; text-align:center">
 <td class="x_no-padding" style="word-break:break-word; padding:0; vertical-align:top; text-align:center; color:#333333; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:normal; margin:0; line-height:20px; font-size:14px; border-collapse:collapse!important">
 <div class="x_hero-image-wrap" style="overflow:hidden; border-radius:3px 3px 0 0">
-<a href="https://www.andela/buildForSDG" target="_blank" style="color:#4183C4; text-decoration:none"><div style="display: inline-block; max-width: 99.9%;"><img src="https://res.cloudinary.com/dvfr0z8wr/image/upload/v1585661610/Artboard-1_3x.png" alt="One Kiosk Africa" border="0" class="x_hero-image" style="margin:0; padding:0; outline:none; text-decoration:none; height:200px; max-width:100%; border:none; display:block"></div> </a></div>
+<a href="http://www.andela/sdg.com" target="_blank" style="color:#4183C4; text-decoration:none"><div style="display: inline-block; max-width: 99.9%;"><img src="http://res.cloudinary.com/devfortune/image/upload/v1589832481/dixykgumbcb65wbvbqex.png" alt="EmpowerFarmer" border="0" class="x_hero-image" style="margin:0; padding:0; outline:none; text-decoration:none; height:200px; max-width:100%; border:none; display:block"></div> </a></div>
 </td>
 <td class="x_expander" style="word-break:break-word; padding:0!important; vertical-align:top; text-align:center; color:#333333; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:normal; margin:0; line-height:20px; font-size:14px; visibility:hidden; width:0px; border-collapse:collapse!important">
 </td>
@@ -87,13 +87,13 @@ const accountConfirmationEmailMessage = (data, link) => `
 <td style="word-break:break-word; padding:0px 0px 10px; vertical-align:top; text-align:center; color:#333333; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:normal; margin:0; line-height:20px; font-size:14px; border-collapse:collapse!important">
 <div class="x_content">
 <h2 class="x_content-heading" style="color:#333; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:300; padding:0; margin:25px 0 20px; text-align:center; line-height:1; word-break:normal; font-size:22px">
-Welcome ${data.firstName} || ${data.lastName}</h2>
+Welcome ${data.firstName} ${data.lastName}</h2>
 <p class="x_copy" style="margin:0 30px; word-wrap:normal; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; font-weight:300; color:#333333; line-height:1.5; padding:0; text-align:center">
-Welcome to <b>OneKiosk Africa</b>, you are one step away to finish setting up your account and start using <b>OneKiosk Africa</b>, confirm we’ve got the correct email <b><i>${
+Welcome to <b>Empower Farmer</b>, you are one step away to finish setting up your account and start using <b>Empower Farmer</b>, confirm we’ve got the correct email <b><i>${
   data.email
 }</i></b> for you.</p>
-<div class="x_cta-button-wrap" style="padding:30px 0 20px; text-align:center; color:#EA8036">
-<a href=${link} target="_blank" style="color:#ffffff; text-decoration:none; display:inline-block; text-align:center; background:#EA8036; background-color:#EA8036; border-radius:5px; -webkit-border-radius:5px; padding:12px 44px; font-weight:bold; letter-spacing:normal; font-size:17px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; margin:0 auto; width:auto!important">
+<div class="x_cta-button-wrap" style="padding:30px 0 20px; text-align:center; color:#EA8036">+
+<a href=${link} target="_blank" style="color:#ffffff; text-decoration:none; display:inline-block; text-align:center; background:#51AB78; background-color:#51AB78; border-radius:5px; -webkit-border-radius:5px; padding:12px 44px; font-weight:bold; letter-spacing:normal; font-size:17px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; margin:0 auto; width:auto!important">
 Verify your email</a></div>
 </div>
 </td>
@@ -152,5 +152,4 @@ Verify your email</a></div>
   </body>
 </html>
 `;
-
 export default accountConfirmationEmailMessage;

@@ -6,7 +6,6 @@ accountConfirmationEmailMessage
   from '../message_template/accountMessaeTemplate';
 
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
-
 const sendNotificationEmail = async (to, token, data, emailOrSMSType) => {
   let msg;
 
@@ -15,8 +14,8 @@ const sendNotificationEmail = async (to, token, data, emailOrSMSType) => {
       const link = `${process.env.BACKEND_URL}${settings.API_ENTRY_POINT}/auth/verify/email?token=${token}`;
       msg = {
         to,
-        from: 'no-reply@buildforsdg@andela.com',
-        subject: 'Confirm your ADMIN account... AndelaBuildSDG Empower farmer access link',
+        from: 'no-reply@buildforsdg.andela.com',
+        subject: 'Confirm your empowerFarmer account... AndelaBuildSDG Empower farmer access link',
         html: accountConfirmationEmailMessage(data, link)
       };
       break;
@@ -25,8 +24,8 @@ const sendNotificationEmail = async (to, token, data, emailOrSMSType) => {
       const link = `${process.env.BACKEND_URL}${settings.API_ENTRY_POINT}/auth/verify/email?token=${token}`;
       msg = {
         to,
-        from: 'no-replybuildforsdg@andela.com',
-        subject: 'Confirm your ADMIN account... AndelaBuildSDG Empower farmer access link',
+        from: 'no-reply@buildforsdg.andela.com',
+        subject: 'Confirm your empowerFarmer account... AndelaBuildSDG Empower farmer access link',
         html: accountConfirmationEmailMessage(data, link)
       };
       break;
@@ -35,15 +34,14 @@ const sendNotificationEmail = async (to, token, data, emailOrSMSType) => {
       const link = `${process.env.BACKEND_URL}${settings.API_ENTRY_POINT}/auth/verify/email?token=${token}`;
       msg = {
         to,
-        from: 'no-reply@buildforsdg@andela.com',
+        from: 'no-reply@buildforsdg.andela.com',
         subject: 'Confirm your ADMIN account... AndelaBuildSDG Empower farmer access link',
         html: accountConfirmationEmailMessage(data.firstName, data.lastName, to, link)
       };
       break;
     }
   }
-  const send = await sendGrid.send(msg);
-  console.log('>>>', send);
+  await sendGrid.send(msg);
 };
 
 export default sendNotificationEmail;
