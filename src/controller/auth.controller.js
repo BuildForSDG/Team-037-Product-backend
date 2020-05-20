@@ -49,6 +49,23 @@ export const logInUser = async (req, res) => {
   }
 };
 
+export const getASpecificUser = async (req, res) => {
+  try {
+    const { id } = req.token.payload;
+    const user = await findUser(id);
+
+    if (user === undefined || !user) {
+      return res.status(404).json({ message: 'User retrieved successfully' });
+    }
+
+    if (user === undefined || user.type === 'user') {
+      return res.status(404).json({ message: 'User retrieved successfully' });
+    }
+    return res.status(200).json({ status: 200, message: 'User retrieved successfully', data: user });
+  } catch (error) {
+    return res.status(500).json({ status: 500, message: 'Internal Server Error' });
+  }
+};
 
 export const getLoginUrlFromGoogle = async (req, res) => {
   const googleUrl = await urlGoogle();

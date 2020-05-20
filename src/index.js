@@ -19,9 +19,9 @@ const server = `http://localhost:${PORT}`;
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: 'PROGRAMMERS_HUB_FORUM',
+      title: 'EMPOWER FARMERS',
       description:
-        'This application is developed towards creating an interactive platform for Programmers Hub Members',
+        'This application is developed towards the empowerment of farmers in africa',
       contact: {
         name: 'Fortune'
       },
@@ -42,7 +42,7 @@ app.use('/api-docs', routes);
 app.use('', swaggerUi.serve, swaggerUi.setup(swaggerDOCS));
 
 app.get('/api/v1', (req, res) => {
-  res.status(200).json({ message: 'Welcome to programmers_Hub_Forumn API' });
+  res.status(200).json({ message: 'Welcome to EMPOWER FARMERS API' });
 });
 
 
