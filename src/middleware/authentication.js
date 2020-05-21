@@ -9,13 +9,14 @@ export const authenticationSchema = Joi.object({
   email: email.required(),
   password,
   phone: phone.required(),
-  type: list(['farmer', 'sponsor', 'user', 'admin', 'super_admin']),
+  userType: list(['farmer', 'sponsor', 'user', 'admin', 'super_admin']),
   country: Joi.string(),
   imageUrl: Joi.string().uri(),
   state: Joi.string(),
   address: Joi.string().required(),
   city: Joi.string(),
-  dateOfBirth
+  dateOfBirth,
+  confirmationType: list(['SMS', 'EMAIL']).required()
 });
 
 export const editUserProfile = Joi.object({});

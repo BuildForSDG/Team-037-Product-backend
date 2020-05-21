@@ -2,6 +2,8 @@ import express, { json, urlencoded } from 'express';
 import 'dotenv/config';
 import logger from 'morgan';
 import debug from 'debug';
+import expressUpload from 'express-fileupload';
+// import routes from './routes/index';
 import swaggerJsDocs from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import routes from './routes';
@@ -12,6 +14,8 @@ const app = express();
 app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
+app.use(expressUpload({ useTempFiles: true }));
+app.use('/api/v1', routes);
 
 const PORT = process.env.PORT || 8000;
 const server = `http://localhost:${PORT}`;

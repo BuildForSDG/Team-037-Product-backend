@@ -7,6 +7,7 @@ engines:
    exclude_paths:
      - '**/__tests__/**' 
      - '**/__tests__/auth.test.js'
+     - '**/helper/**'
      - '**/database/**'
  metric:
    exclude_paths:

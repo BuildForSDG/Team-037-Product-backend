@@ -1,22 +1,28 @@
+import sendGrid from '@sendgrid/mail';
 import { saveUser, savePassword, findUser } from '../services/users.services';
 import Security from '../utils/security';
 import { urlGoogle } from '../utils/google_config';
+import accountConfirmationHelper from '../helper/activation/account_confirmation';
 import {
   SERVER_ERROR_MESSAGE, SUCCESS, LOGIN_SUCCESS, INVALID_USER
 } from '../utils/constant';
 import 'dotenv/config';
 
+sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
+
+
 export const createUser = async (req, res) => {
   try {
-    const { password } = req.body;
+    const { password, confirmationType } = req.body;
     const user = await saveUser(req.body);
     const { id, email, userType } = user;
     await savePassword(password, id);
+    await accountConfirmationHelper(confirmationType, user, 'ACCOUNT SIGNUP VERIFICATION');
 
     const jwtToken = await Security.generateNewToken({ id, email, userType });
 
     return res.status(201).json({
-      status: 200, message: SUCCESS, data: { user, jwtToken }
+      status: 201, message: SUCCESS, data: { user, jwtToken }
     });
   } catch (error) {
     return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });

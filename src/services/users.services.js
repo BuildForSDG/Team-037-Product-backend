@@ -38,3 +38,15 @@ export const savePassword = async (password, userId) => {
     return error;
   }
 };
+
+export const updateUser = async (updateVerify, type, userId) => {
+  const parameter = { verified: updateVerify };
+  const where = {
+    where: {
+      id: userId,
+      userType: type
+    }
+  };
+  const update = await User.update(parameter, where);
+  return update;
+};
