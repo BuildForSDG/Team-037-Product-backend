@@ -50,6 +50,7 @@
     "bcrypt": "^4.0.1",
     "bitly": "^7.1.0",
     "cloudinary": "^1.21.0",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "crypto": "^1.0.1",
     "crypto-random-string": "^3.2.0",
@@ -66,14 +67,18 @@
     "nodemailer": "^6.4.6",
     "nodemon": "^2.0.3",
     "npm": "^6.14.5",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-jwt": "^4.0.0",
+    "path": "^0.12.7",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",
     "sendgrid": "^5.2.3",
     "sequelize": "^5.21.7",
     "supertest": "^4.0.2",
-    "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4",
-    "validator": "^13.0.0"
+    "validator": "^13.0.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

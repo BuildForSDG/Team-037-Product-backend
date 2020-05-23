@@ -4,9 +4,11 @@ import { ALREADY_EXIST, SERVER_ERROR_MESSAGE } from '../../utils/constant';
 export const emailPhoneValidator = async (req, res, next) => {
   try {
     const { email, phone } = req.body;
-
     const emailExist = await findUser(email);
-    const phoneExist = await findUser(phone);
+    let phoneExist = false;
+    if (phone) {
+      phoneExist = await findUser(phone);
+    }
 
     if ((emailExist && emailExist.isNewRecord === false)
       || (phoneExist && phoneExist.isNewRecord === false)) {

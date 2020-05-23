@@ -8,15 +8,15 @@ export const authenticationSchema = Joi.object({
   lastName: name('lastName').required(),
   email: email.required(),
   password,
-  phone: phone.required(),
-  userType: list(['farmer', 'sponsor', 'user', 'admin', 'super_admin']),
+  phone,
+  userType: list(['farmer', 'sponsor', 'user', 'admin', 'super_admin'], 'userType'),
   country: Joi.string(),
   imageUrl: Joi.string().uri(),
   state: Joi.string(),
-  address: Joi.string().required(),
+  address: Joi.string(),
   city: Joi.string(),
   dateOfBirth,
-  confirmationType: list(['SMS', 'EMAIL']).required()
+  confirmationType: list(['SMS', 'EMAIL'], 'confirmationType').required()
 });
 
 export const editUserProfile = Joi.object({});
