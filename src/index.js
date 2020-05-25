@@ -3,7 +3,6 @@ import 'dotenv/config';
 import logger from 'morgan';
 import debug from 'debug';
 import expressUpload from 'express-fileupload';
-// import routes from './routes/index';
 import swaggerJsDocs from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import routes from './routes';
@@ -39,11 +38,11 @@ const swaggerOptions = {
 
 const swaggerDOCS = swaggerJsDocs(swaggerOptions);
 
-app.use('/api/v1', routes);
+app.use('/api/v1/', routes);
 
-app.use('/api-docs', routes);
+// app.use('/api-docs', routes);
 
-app.use('', swaggerUi.serve, swaggerUi.setup(swaggerDOCS));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDOCS));
 
 app.get('/api/v1', (req, res) => {
   res.status(200).json({ message: 'Welcome to EMPOWER FARMERS API' });

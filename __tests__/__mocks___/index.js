@@ -2,10 +2,13 @@
 export const newUser = {
   firstName: 'bola',
   lastName: 'segun',
-  email: 'gabteezy@gmail.com',
+  email: 'abteezy@gmail.com',
   password: 'qwertyQ123@',
   address: '23 oduwaye lagos',
-  phone: '0344652114'
+  phone: '0344652114',
+  confirmationType: 'EMAIL',
+  country: 'Nigeria'
+
 };
 
 export const emptyName = {
@@ -37,7 +40,7 @@ export const conflict = {
 };
 
 export const loginUser = {
-  username: 'gabteezy@gmail.com',
+  username: 'abteezy@gmail.com',
   password: 'qwertyQ123@'
 };
 
