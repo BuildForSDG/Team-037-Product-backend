@@ -1,7 +1,6 @@
 import sendGrid from '@sendgrid/mail';
 import { saveUser, savePassword, findUser } from '../services/users.services';
 import Security from '../utils/security';
-import { urlGoogle } from '../utils/google_config';
 import accountConfirmationHelper from '../helper/activation/account_confirmation';
 import {
   SERVER_ERROR_MESSAGE, SUCCESS, LOGIN_SUCCESS, INVALID_USER
@@ -9,8 +8,6 @@ import {
 import 'dotenv/config';
 
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
-
-
 export const createUser = async (req, res) => {
   try {
     const { password, confirmationType } = req.body;
@@ -71,10 +68,4 @@ export const getASpecificUser = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ status: 500, message: 'Internal Server Error' });
   }
-};
-
-export const getLoginUrlFromGoogle = async (req, res) => {
-  const googleUrl = await urlGoogle();
-  res.status(200).send(googleUrl);
-  return res.status(500).json({ status: 500, message: 'Internal Server Error' });
 };
