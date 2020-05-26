@@ -12,11 +12,18 @@ import Security from '../utils/security';
 
 const authRoute = express.Router();
 const BASE_URL = '/auth';
+
 authRoute.post(`${BASE_URL}/createUser`, validateInput(authenticationSchema), emailPhoneValidator, createUser);
 authRoute.post(`${BASE_URL}/signIn`, validateInput(loginSchema), logInUser);
 authRoute.get(`${BASE_URL}/user`, Security.verifyTokenMiddleWare, getASpecificUser);
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 authRoute.get('/auth/google', passport.authenticate('google', { session: false, scope: ['profile', 'email'] }));
 authRoute.get('/auth/google/callback', passport.authenticate('google', { session: false }), socialController);
 
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 export default authRoute;

@@ -5,6 +5,11 @@ import cors from 'cors';
 import debug from 'debug';
 import expressUpload from 'express-fileupload';
 import setPassportMiddleware from './services/strategy';
+// import routes from './routes/index';
+import cors from 'cors';
+import path from 'path';
+import YAML from 'yamljs';
+import swaggerUi from 'swagger-ui-express';
 import routes from './routes';
 
 const log = debug('dev');
@@ -31,6 +36,7 @@ app.get('/api/v1', (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static('uploads'));
 app.listen(PORT, () => log(`App listening on port ${server}!`));
+
 const documentation = YAML.load(path.join(__dirname, '../docs/swagger.yaml'));
 documentation.servers[0].url = process.env.SERVER_URL;
 // setup swagger documentation
