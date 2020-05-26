@@ -1,4 +1,3 @@
-/* eslint-disable no-tabs */
 import express from 'express';
 import passport from 'passport';
 import socialController from '../controller/google.auth.controller';
@@ -14,6 +13,7 @@ const authRoute = express.Router();
 const BASE_URL = '/auth';
 
 authRoute.post(`${BASE_URL}/createUser`, validateInput(authenticationSchema), emailPhoneValidator, createUser);
+
 authRoute.post(`${BASE_URL}/signIn`, validateInput(loginSchema), logInUser);
 authRoute.get(`${BASE_URL}/user`, Security.verifyTokenMiddleWare, getASpecificUser);
 
