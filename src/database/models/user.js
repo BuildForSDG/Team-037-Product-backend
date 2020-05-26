@@ -24,8 +24,7 @@ export default (sequelize, DataTypes) => {
       },
       phone: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: false
+        allowNull: true
       },
       country: {
         type: DataTypes.STRING
@@ -40,9 +39,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       userType: {
-        type: DataTypes.ENUM(['sponsor', 'user', 'admin', 'super_admin']),
-        defaultValue: 'user'
-
+        type: DataTypes.STRING
       },
       imageUrl: {
         type: DataTypes.STRING

@@ -21,8 +21,8 @@ module.exports = {
       type: Sequelize.STRING
     },
     phone: {
-      allowNull: true,
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: true
     },
     country: {
       type: Sequelize.STRING
@@ -37,8 +37,8 @@ module.exports = {
       type: Sequelize.STRING
     },
     userType: {
-      allowNull: false,
-      type: Sequelize.ENUM(['sponsor', 'user', 'admin', 'super_admin'])
+      type: Sequelize.ENUM(['sponsor', 'buyer', 'admin', 'super_admin']),
+      defaultValue: 'buyer'
     },
     verified: {
       allowNull: false,

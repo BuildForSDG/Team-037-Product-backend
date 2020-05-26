@@ -23,9 +23,9 @@ export const phone = Joi.number()
     'string.empty': 'Phone is not allowed to be empty'
   });
 
-export const list = (fields, userType = 'userType') => Joi.string()
+export const list = (fields, fieldType) => Joi.string()
   .valid(...fields)
-  .error(new Error(`specify a valid ${userType}`));
+  .error(new Error(`specify a valid ${fieldType}`));
 
 export const email = Joi.string()
   .email()
