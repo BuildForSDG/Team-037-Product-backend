@@ -67,9 +67,12 @@
     "nodemailer": "^6.4.6",
     "nodemon": "^2.0.3",
     "npm": "^6.14.5",
+<<<<<<< HEAD
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
+=======
+>>>>>>> 18cd2adb76fdbce7e5f6789021c0f504522abe0f
     "path": "^0.12.7",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",

@@ -17,6 +17,7 @@ authRoute.post(`${BASE_URL}/createUser`, validateInput(authenticationSchema), em
 authRoute.post(`${BASE_URL}/signIn`, validateInput(loginSchema), logInUser);
 authRoute.get(`${BASE_URL}/user`, Security.verifyTokenMiddleWare, getASpecificUser);
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 authRoute.get('/auth/google', passport.authenticate('google', { session: false, scope: ['profile', 'email'] }));
@@ -26,4 +27,6 @@ authRoute.get('/auth/google/callback', passport.authenticate('google', { session
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> 18cd2adb76fdbce7e5f6789021c0f504522abe0f
 export default authRoute;
