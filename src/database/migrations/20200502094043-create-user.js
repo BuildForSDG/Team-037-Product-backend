@@ -21,8 +21,8 @@ module.exports = {
       type: Sequelize.STRING
     },
     phone: {
-      allowNull: true,
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: true
     },
     country: {
       type: Sequelize.STRING

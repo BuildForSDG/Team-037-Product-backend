@@ -24,6 +24,7 @@ export default (sequelize, DataTypes) => {
       },
       phone: {
         type: DataTypes.STRING,
+        allowNull: true
       },
       country: {
         type: DataTypes.STRING
@@ -38,7 +39,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       userType: {
-        type: DataTypes.STRING,   
+        type: DataTypes.STRING
       },
       imageUrl: {
         type: DataTypes.STRING
