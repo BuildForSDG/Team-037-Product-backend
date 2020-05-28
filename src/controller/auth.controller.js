@@ -52,6 +52,29 @@ export const logInUser = async (req, res) => {
   }
 };
 
+export const updateProfile = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const newBody = req.body;
+    const user = await findUser(id);
+    if (user === undefined || !user) {
+      res.status(404).json({
+        status: 404,
+        message: 'User does not exist'
+      });
+    }
+
+    const profile = await editProfile(id, newBody);
+    return res.status(201).json({
+      status: 200,
+      message: 'User Updated Successfully',
+      data: profile
+    });
+  } catch (error) {
+    return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
+  }
+};
+
 export const getASpecificUser = async (req, res) => {
   try {
     const { id } = req.token.payload;
