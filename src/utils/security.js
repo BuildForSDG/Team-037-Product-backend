@@ -38,7 +38,7 @@ export default class Security {
 
   static async generateNewToken(payload) {
     try {
-      const token = await jwt.sign({ payload }, secret, SIGN_OPTION);
+      const token = await jwt.sign(payload, secret, SIGN_OPTION);
       return token;
     } catch (error) {
       return error;
