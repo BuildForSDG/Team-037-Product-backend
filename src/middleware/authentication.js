@@ -24,20 +24,18 @@ export const authenticationSchema = Joi.object({
 });
 
 export const editUserProfileSchema = Joi.object({
-  firstName: name('firstName').required(),
-  lastName: name('lastName').required(),
-  password,
-  phone: phone.required(),
-  type: list(['farmer', 'sponsor', 'user', 'admin', 'super_admin']),
+  firstName: name('firstName'),
+  lastName: name('lastName'),
+  phone,
   country: Joi.string(),
   imageUrl: Joi.string().uri(),
   state: Joi.string(),
-  address: Joi.string().required(),
-  city: Joi.string().required(),
-  dateOfBirth,
-  accountName: Joi.string().required(),
-  accountNumber: Joi.string().required(),
-  bankName: Joi.string().required()
+  address: Joi.string(),
+  city: Joi.string(),
+  dateOfBirth: Joi.string(),
+  accountName: Joi.string(),
+  accountNumber: Joi.string(),
+  bankName: Joi.string()
 });
 
 export const loginSchema = Joi.object({
