@@ -21,7 +21,7 @@ export const createUser = async (req, res) => {
     const jwtToken = await Security.generateNewToken({ id, email, userType });
 
     return res.status(201).json({
-      status: 201, message: SUCCESS, data: { user, jwtToken }
+      status: 201, message: SUCCESS, user, jwtToken
     });
   } catch (error) {
     return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
@@ -93,4 +93,3 @@ export const getASpecificUser = async (req, res) => {
     return res.status(500).json({ status: 500, message: 'Internal Server Error' });
   }
 };
-

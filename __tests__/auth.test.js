@@ -14,14 +14,8 @@ describe('SIGNUP API', () => {
       .send(mocks.newUser)
       .end((err, res) => {
         if (err) done(err);
-        const { data } = res.body;
-        if (data) {
           expect(res.statusCode).toEqual(201);
-          expect(res.body.message).toEqual(SUCCESS);
-        } else {
-          expect(res.statusCode).toEqual(409);
-          expect(res.body.message).toEqual(ALREADY_EXIST);
-        }
+          expect(res.body.message).toEqual(SUCCESS);        
         done();
       });
   });

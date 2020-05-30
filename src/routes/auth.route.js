@@ -12,12 +12,12 @@ import { validateInput } from '../middleware/schemaValidation';
 import { authenticationSchema, loginSchema, editUserProfileSchema } from '../middleware/authentication';
 import { emailPhoneValidator } from '../middleware/validation/index';
 import Security from '../utils/security';
+import { verifyUserTokenViaEmail } from '../controller/activation.controller';
 
 const authRoute = express.Router();
 const BASE_URL = '/auth';
 
 authRoute.post(`${BASE_URL}/createUser`, validateInput(authenticationSchema), emailPhoneValidator, createUser);
-
 authRoute.post(`${BASE_URL}/signIn`, validateInput(loginSchema), logInUser);
 authRoute.get(`${BASE_URL}/user`, Security.verifyTokenMiddleWare, getASpecificUser);
 
