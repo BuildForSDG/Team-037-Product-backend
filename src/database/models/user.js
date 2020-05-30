@@ -39,7 +39,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       userType: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       imageUrl: {
         type: DataTypes.STRING
@@ -52,6 +52,15 @@ export default (sequelize, DataTypes) => {
         defaultValue: false
       },
       dateOfBirth: {
+        type: DataTypes.STRING
+      },
+      accountName: {
+        type: DataTypes.STRING
+      },
+      accountNumber: {
+        type: DataTypes.STRING
+      },
+      bankName: {
         type: DataTypes.STRING
       }
     },

@@ -1,8 +1,14 @@
-export const SERVER_ERROR_MESSAGE = 'Internal Sever Error';
-export const SUCCESS = 'User created successfully and verification email has been sent to your email';
+export const SERVER_ERROR_MESSAGE = 'Internal Server Error';
+export const SUCCESS = 'User created successfully';
 export const ALREADY_EXIST = 'User already exist, please enter new details';
 export const LOGIN_SUCCESS = 'You have successfully loggedIn';
 export const INVALID_USER = 'Invalid username or password';
 export const NO_TOKEN_ERROR = 'Invalid token, You must have confirmed your account';
 export const ACTIVATION_SUCCESS = 'You have successfully verified your account';
 export const NO_USER = 'No user found, please signup';
+export const ONLY_FARMER = 'Sorry you cannot create or edit a farm, only farmer can perform that action';
+export const NOT_ACTIVATED = 'You need to activate your account before you can create a farm';
+export const FARM_SUCCESS = 'Farm successfully created';
+export const NO_FARM = 'No farm found';
+export const UPDATE_FARM = 'Your farm has been updated successfully';
+export const GET_FARM = 'Farm retrieved successfully';
