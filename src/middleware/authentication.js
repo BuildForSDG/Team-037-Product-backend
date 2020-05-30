@@ -16,10 +16,27 @@ export const authenticationSchema = Joi.object({
   address: Joi.string(),
   city: Joi.string(),
   dateOfBirth,
-  confirmationType: list(['SMS', 'EMAIL'], 'confirmationType').required()
+  confirmationType: list(['SMS', 'EMAIL'], 'confirmationType').required(),
+  accountName: Joi.string(),
+  accountNumber: Joi.string(),
+  bankName: Joi.string()
+
 });
 
-export const editUserProfile = Joi.object({});
+export const editUserProfileSchema = Joi.object({
+  firstName: name('firstName'),
+  lastName: name('lastName'),
+  phone,
+  country: Joi.string(),
+  imageUrl: Joi.string().uri(),
+  state: Joi.string(),
+  address: Joi.string(),
+  city: Joi.string(),
+  dateOfBirth: Joi.string(),
+  accountName: Joi.string(),
+  accountNumber: Joi.string(),
+  bankName: Joi.string()
+});
 
 export const loginSchema = Joi.object({
   username: email.required(),

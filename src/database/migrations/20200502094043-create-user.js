@@ -54,6 +54,15 @@ module.exports = {
     city: {
       type: Sequelize.STRING
     },
+    accountName: {
+      type: Sequelize.STRING
+    },
+    accountNumber: {
+      type: Sequelize.STRING
+    },
+    bankName: {
+      type: Sequelize.STRING
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE
@@ -61,7 +70,7 @@ module.exports = {
     updatedAt: {
       allowNull: false,
       type: Sequelize.DATE
-    }
+    },
   }),
   down: (queryInterface) => queryInterface.dropTable('Users')
 };

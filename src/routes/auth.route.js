@@ -1,11 +1,15 @@
 import express from 'express';
 import passport from 'passport';
 import socialController from '../controller/google.auth.controller';
+import { verifyUserTokenViaEmail } from '../controller/activation.controller';
 import {
-  createUser, logInUser, getASpecificUser
+  createUser,
+  logInUser,
+  getASpecificUser,
+  updateProfile
 } from '../controller/auth.controller';
 import { validateInput } from '../middleware/schemaValidation';
-import { authenticationSchema, loginSchema } from '../middleware/authentication';
+import { authenticationSchema, loginSchema, editUserProfileSchema } from '../middleware/authentication';
 import { emailPhoneValidator } from '../middleware/validation/index';
 import Security from '../utils/security';
 
@@ -19,5 +23,7 @@ authRoute.get(`${BASE_URL}/user`, Security.verifyTokenMiddleWare, getASpecificUs
 
 authRoute.get('/auth/google', passport.authenticate('google', { session: false, scope: ['profile', 'email'] }));
 authRoute.get('/auth/google/callback', passport.authenticate('google', { session: false }), socialController);
+authRoute.patch(`${BASE_URL}/updateUser`, Security.verifyTokenMiddleWare, validateInput(editUserProfileSchema), updateProfile);
+authRoute.get(`${BASE_URL}/verify/email`, verifyUserTokenViaEmail);
 
 export default authRoute;
