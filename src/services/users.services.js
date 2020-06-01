@@ -12,7 +12,7 @@ export const findUser = async (item) => {
     }
   };
   if (validator.isUUID(item)) {
-    where = { where: { id: item } };
+    where = { where: { id: item } }; 
   }
   const user = await User.findOne(where);
   return user;
@@ -49,4 +49,14 @@ export const updateUser = async (updateVerify, type, userId) => {
   };
   const update = await User.update(parameter, where);
   return update;
+};
+
+export const editProfile = async (userId, body) => {
+  try {
+    const where = { where: { id: userId }, returning: true };
+    const userData = await User.update(body, where);
+    return userData;
+  } catch (error) {
+    return error;
+  }
 };

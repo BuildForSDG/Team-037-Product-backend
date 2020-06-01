@@ -74,7 +74,7 @@
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",
     "sendgrid": "^5.2.3",
-    "sequelize": "^5.21.7",
+    "sequelize": "^5.21.8",
     "supertest": "^4.0.2",
     "swagger-ui-express": "^4.1.4",
     "validator": "^13.0.0",
