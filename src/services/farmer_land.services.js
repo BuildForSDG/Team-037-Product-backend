@@ -43,3 +43,12 @@ export const editFarmLand = async (farmId, item) => {
     return error;
   }
 };
+
+
+export const getAllFarm = async () => {
+  try {
+    return await farmLand.findAll({ limit: 20, order: [['createdAt', 'DESC']] });
+  } catch (err) {
+    return err;
+  }
+};

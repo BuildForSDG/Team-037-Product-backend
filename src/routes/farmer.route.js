@@ -13,7 +13,7 @@ const farmerRoute = express.Router();
 farmerRoute.post(`${BASE_URL}/createFarm`, Security.verifyTokenMiddleWare, validateInput(createFarmSchema), upload, createFarmLand);
 
 // UPDATE FARM
-farmerRoute.patch(`${BASE_URL}/:farmId/editFarm`, Security.verifyTokenMiddleWare, validateInput(editFarmSchema), upload, updateFarmInformation);
+farmerRoute.patch(`${BASE_URL}/:farmId/editFarm`, Security.verifyTokenMiddleWare, upload, validateInput(editFarmSchema), updateFarmInformation);
 
 // RETRIEVE A SINGLE FARM
 farmerRoute.get(`${BASE_URL}/:farmId/getOneFarm`, getFarm);
