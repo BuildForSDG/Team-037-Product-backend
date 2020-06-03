@@ -21,8 +21,8 @@ module.exports = {
       type: Sequelize.STRING
     },
     phone: {
-      allowNull: true,
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: true
     },
     country: {
       type: Sequelize.STRING
@@ -52,6 +52,15 @@ module.exports = {
       type: Sequelize.STRING
     },
     city: {
+      type: Sequelize.STRING
+    },
+    accountName: {
+      type: Sequelize.STRING
+    },
+    accountNumber: {
+      type: Sequelize.STRING
+    },
+    bankName: {
       type: Sequelize.STRING
     },
     createdAt: {

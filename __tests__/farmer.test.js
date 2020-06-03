@@ -41,7 +41,6 @@ describe('FARMER API', () => {
       .end((err, res) => {
         if (err) done(err);
         user = res.body.data;
-        console.log('>>>>>wee', user);
         if (!user) {
           expect(res.statusCode).toEqual(401);
           expect(res.body.message).toEqual(NOT_ACTIVATED);
@@ -60,7 +59,6 @@ describe('FARMER API', () => {
       .set('authorization', farmerToken)
       .send(mocks.updateFarm)
       .end((err, res) => {
-        console.log('>>>>>edit>>', res)
         if (err) done(err);
         const { data } = res.body;
         if (!data) {

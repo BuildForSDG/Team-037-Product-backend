@@ -1,5 +1,7 @@
 import sendGrid from '@sendgrid/mail';
-import { saveUser, savePassword, findUser } from '../services/users.services';
+import {
+  saveUser, savePassword, findUser, editProfile
+} from '../services/users.services';
 import Security from '../utils/security';
 import accountConfirmationHelper from '../helper/activation/account_confirmation';
 import {
@@ -48,6 +50,28 @@ export const logInUser = async (req, res) => {
       return res.status(401).json({ status: 401, message: INVALID_USER });
     }
     return res.status(401).json({ status: 401, message: INVALID_USER });
+  } catch (error) {
+    return res.status(500).json({ status: 500, message: error });
+  }
+};
+
+export const updateProfile = async (req, res) => {
+  try {
+    const { id } = req.token;
+    const user = await findUser(id);
+    if (user === undefined || !user) {
+      res.status(404).json({
+        status: 404,
+        message: 'User does not exist'
+      });
+    }
+
+    const profile = await editProfile(id, req.body);
+    return res.status(200).json({
+      status: 200,
+      message: 'User Updated Successfully',
+      data: profile
+    });
   } catch (error) {
     return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
   }

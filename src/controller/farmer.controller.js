@@ -13,7 +13,7 @@ import {
 
 export const createFarmLand = async (req, res) => {
   try {
-    const { id: userId } = req.token.payload;
+    const { id: userId } = req.token;
 
     const farmer = await findUser(userId);
     if (!farmer || farmer === undefined) {
@@ -39,7 +39,7 @@ export const createFarmLand = async (req, res) => {
 
 export const updateFarmInformation = async (req, res) => {
   try {
-    const { id: farmerId } = req.token.payload;
+    const { id: farmerId } = req.token;
     const { farmId } = req.params;
     const farmer = await findUser(farmerId);
 

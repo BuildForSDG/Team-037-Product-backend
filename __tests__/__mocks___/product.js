@@ -13,7 +13,7 @@ export const editProduct = {};
 export const farmerLogin = {
   username: 'dreezyy@hotmail.com',
   password: 'qwerte@123wwd'
-	'
 };
 const BASE_URL = '/api/v1';
 export const signInURl = `${BASE_URL}/auth/signIn`;
+export const productUrl = `${BASE_URL}/product/3740fe02-a51e-11ea-bb37-0242ac130002/createFarmProduct`;

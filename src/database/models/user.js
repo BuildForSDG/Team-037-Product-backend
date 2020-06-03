@@ -23,7 +23,8 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
       phone: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
       },
       country: {
         type: DataTypes.STRING
@@ -51,6 +52,15 @@ export default (sequelize, DataTypes) => {
         defaultValue: false
       },
       dateOfBirth: {
+        type: DataTypes.STRING
+      },
+      accountName: {
+        type: DataTypes.STRING
+      },
+      accountNumber: {
+        type: DataTypes.STRING
+      },
+      bankName: {
         type: DataTypes.STRING
       }
     },

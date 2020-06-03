@@ -6,7 +6,7 @@ import models from '../database/models';
 const { passwordManager } = models;
 
 const SIGN_OPTION = {
-  issuer: 'Authorization/Resource/OneKiosk Africa',
+  issuer: 'Authorization/Resource/Empower farmer',
   subject: 'Authentication Bearer',
   expiresIn: '30d'
 };
@@ -38,7 +38,7 @@ export default class Security {
 
   static async generateNewToken(payload) {
     try {
-      const token = await jwt.sign({ payload }, secret, SIGN_OPTION);
+      const token = await jwt.sign(payload, secret, SIGN_OPTION);
       return token;
     } catch (error) {
       return error;
@@ -58,7 +58,7 @@ export default class Security {
     const cookie = req.headers.authorization;
     const token = await Security.verifyToken(cookie);
     if (token === undefined || !token) {
-      return res.status(401).json({ status: 401, message: 'IInvalid or missing authorization token.' });
+      return res.status(401).json({ status: 401, message: 'Invalid or missing authorization token.' });
     }
     req.token = token;
     return next();

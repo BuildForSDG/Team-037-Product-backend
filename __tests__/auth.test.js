@@ -2,12 +2,11 @@ import supertest from 'supertest';
 import app from '../src';
 import * as mocks from './__mocks___';
 import {
-  SUCCESS, ALREADY_EXIST, LOGIN_SUCCESS, INVALID_USER
+  SUCCESS, ALREADY_EXIST, LOGIN_SUCCESS, INVALID_USER, SERVER_ERROR_MESSAGE
 } from '../src/utils/constant';
 
+let userToken;
 const request = supertest(app);
-
-
 describe('SIGNUP API', () => {
   it('should create new user', (done) => {
     request
@@ -15,8 +14,8 @@ describe('SIGNUP API', () => {
       .send(mocks.newUser)
       .end((err, res) => {
         if (err) done(err);
-          expect(res.statusCode).toEqual(201);
-          expect(res.body.message).toEqual(SUCCESS);        
+        expect(res.statusCode).toEqual(201);
+        expect(res.body.message).toEqual(SUCCESS);
         done();
       });
   });
@@ -48,22 +47,38 @@ describe('AUTH LOGIN IN API', () => {
   it('should login user', (done) => {
     request
       .post(mocks.baseUrlLogin)
+      .send(mocks.wrongLoginUser)
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.statusCode).toEqual(401);
+        expect(res.body.message).toEqual(INVALID_USER);
+        done();
+      });
+  });
+});
+
+describe('EDIT PROFILE', () => {
+  beforeAll((done) => {
+    request
+      .post(mocks.baseUrlLogin)
       .send(mocks.loginUser)
       .end((err, res) => {
+        userToken = res.body.userToken);
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.message).toEqual(LOGIN_SUCCESS);
         done();
       });
   });
-  it('should login user', (done) => {
+  it('It should Update a User', (done) => {
     request
-      .post(mocks.baseUrlLogin)
-      .send(mocks.wrongLoginUser)
+      .patch(mocks.baseUrlUpdateProfile)
+      .set('authorization', userToken)
+      .send(mocks.editProfile)
       .end((err, res) => {
         if (err) done(err);
-        expect(res.statusCode).toEqual(401);
-        expect(res.body.message).toEqual(INVALID_USER);
+        expect(res.statusCode).toEqual(200);
+        expect(res.body.message).toEqual('User Updated Successfully');
         done();
       });
   });

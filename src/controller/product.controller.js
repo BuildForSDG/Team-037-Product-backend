@@ -7,7 +7,7 @@ import { findFarm } from '../services/farmer_land.services';
 
 export const createProduct = async (req, res) => {
   try {
-    const { id: farmerId } = req.token.payload;
+    const { id: farmerId } = req.token;
     const { farmId } = req.params;
     const farmer = await findUser(farmerId);
     if (farmer.userType !== 'farmer') {

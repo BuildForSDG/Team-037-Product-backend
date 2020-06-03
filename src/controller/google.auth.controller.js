@@ -1,9 +1,10 @@
 import dotenv from 'dotenv';
 import models from '../database/models';
-import authHelper from '../utils/authHelper';
+import security from '../utils/security';
+import SERVER_ERROR_MESSAGE from '../utils/constant';
 
 dotenv.config();
-
+const { generateNewToken } = security;
 const { SocialPassword } = process.env;
 
 const { User } = models;
@@ -34,7 +35,7 @@ const socialController = async (req, res) => {
       lastName,
       email,
       verified,
-      token: authHelper({ id })
+      token: await generateNewToken({ id })
     };
     // const token = authHelper(payload);
     // return res.send(`${req.user}?token=${token}`);
@@ -46,7 +47,7 @@ const socialController = async (req, res) => {
     });
     // return res.redirect('https://twitter.com/ore_kolade');
   } catch (e) {
-    return res.status(500).send({ status: e, message: 'Server Error' });
+    return res.status(500).send({ status: e, message: SERVER_ERROR_MESSAGE });
   }
 };
 

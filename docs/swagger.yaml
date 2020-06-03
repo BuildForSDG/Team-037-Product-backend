@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  title: Empower Farmer
+  version: 1.0.0
+
+externalDocs:
+  description: Checkout the Github repo
+  url: https://github.com/BuildForSDG/Team-037-Product-backend
+
+servers:
+  - url: /api/v1
+    description: Localhost
+  - url: /api/v1
+    description: Localhost  
+
+tags:
+  - name: user
+    description: user routes
+paths:
+  /auth/createUser:
+    post:
+      tags:
+        - user
+      summary: creating a new user
+      requestBody:
+        description: fields containing user data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/userInput'
+        required: true
+      responses:
+        201: 
+          description: user successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userInput'
+        401:
+          description: unauthorized
+        403:
+          description: Forbidden. Permission needed.
+        409:
+          description: resource already exists
+        500:
+          description: internal server error
+  /auth/signIn:
+    post:
+      tags:
+        - user
+      summary: sign in a user.
+      requestBody:
+        description: fields containing user data
+        content:
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/UserLoginInput'
+        required: true
+      responses:
+        201:
+         description: user signIn successfully
+        401:
+         description: unauthorized
+        403:
+         description: Forbidden Permission needed.
+        409:
+          description: resources already exists
+        500:
+          description: internal server error
+components:
+  schemas:
+    userInput:
+      required:
+        - firstName
+        - lastName
+        - email
+        - password
+        - confirmationType
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: robbins
+        lastName:
+          type: string
+          example: david
+        email:
+          type: string
+          example: david@gmail.com
+        password:
+          type: string
+          example: bbb4e333   
+        confirmationType:
+          type: string
+          example: SMS
+    UserLoginInput:
+      properties:
+        username:
+          type: string
+          example: favour@gmail.com
+        password:
+          type: string
+          example: fbbaa433
+          
