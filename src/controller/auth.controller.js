@@ -15,6 +15,7 @@ export const createUser = async (req, res) => {
     const { password, confirmationType } = req.body;
     const user = await saveUser(req.body);
     const { id, email, userType } = user;
+
     await savePassword(password, id);
     await accountConfirmationHelper(confirmationType, user, 'ACCOUNT SIGNUP VERIFICATION');
 

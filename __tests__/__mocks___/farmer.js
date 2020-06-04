@@ -34,8 +34,8 @@ export const updateFarm = {
 };
 
 export const farmerLogin = {
-  username: 'gabtee@gmail.com',
-  password: 'qwertyQ123@'
+  username: 'dreezyy@hotmail.com',
+  password: 'qwerte@123wwd'
 };
 const BASE_URL = '/api/v1';
 export const signUpURl = `${BASE_URL}/auth/createUser`;
