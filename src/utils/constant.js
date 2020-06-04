@@ -12,3 +12,5 @@ export const FARM_SUCCESS = 'Farm successfully created';
 export const NO_FARM = 'No farm found';
 export const UPDATE_FARM = 'Your farm has been updated successfully';
 export const GET_FARM = 'Farm retrieved successfully';
+export const ALL_FARM = 'Farms retrieved successfully';
+export const PRODUCT_SUCCESS = 'Product created successfully';

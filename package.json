@@ -27,7 +27,8 @@
     "db:undo": "sequelize db:migrate:undo:all",
     "db:seed": "sequelize db:seed:all",
     "undo:seeder": "node_modules/.bin/sequelize db:seed:undo:all && npm run seed",
-    "db:reset": "npm run db:migrate:undo && npm run db:migrate"
+    "db:reset": "npm run db:migrate:undo && npm run db:migrate && npm run  undo:seeder",
+    "seed": "node_modules/.bin/sequelize db:seed:all"
   },
   "author": {
     "name": "Build For SDG",

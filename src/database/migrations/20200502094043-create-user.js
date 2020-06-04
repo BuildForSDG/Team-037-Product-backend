@@ -37,7 +37,7 @@ module.exports = {
       type: Sequelize.STRING
     },
     userType: {
-      type: Sequelize.ENUM(['sponsor', 'buyer', 'admin', 'super_admin']),
+      type: Sequelize.ENUM(['sponsor', 'buyer', 'farmer', 'admin', 'super_admin']),
       defaultValue: 'buyer'
     },
     verified: {
@@ -70,7 +70,7 @@ module.exports = {
     updatedAt: {
       allowNull: false,
       type: Sequelize.DATE
-    },
+    }
   }),
   down: (queryInterface) => queryInterface.dropTable('Users')
 };

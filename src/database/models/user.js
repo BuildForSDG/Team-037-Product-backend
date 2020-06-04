@@ -39,7 +39,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       userType: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       imageUrl: {
         type: DataTypes.STRING

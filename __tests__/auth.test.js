@@ -14,8 +14,8 @@ describe('SIGNUP API', () => {
       .send(mocks.newUser)
       .end((err, res) => {
         if (err) done(err);
-          expect(res.statusCode).toEqual(201);
-          expect(res.body.message).toEqual(SUCCESS);        
+        expect(res.statusCode).toEqual(201);
+        expect(res.body.message).toEqual(SUCCESS);
         done();
       });
   });
@@ -57,30 +57,29 @@ describe('AUTH LOGIN IN API', () => {
   });
 });
 
-describe('auth Users', () => {
+describe('EDIT PROFILE', () => {
   beforeAll((done) => {
     request
       .post(mocks.baseUrlLogin)
       .send(mocks.loginUser)
       .end((err, res) => {
-        userToken = res.body.jwtToken;
+        userToken = res.body.userToken);
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.message).toEqual(LOGIN_SUCCESS);
         done();
       });
   });
-  describe('EDIT PROFILE', () => {
-    it('It should Update a User', (done) => {
-      request
-        .patch(mocks.baseUrlUpdateProfile)
-        .set('authorization', userToken)
-        .send(mocks.editProfile)
-        .end((err, res) => {
-          expect(res.statusCode).toEqual(200);
-          expect(res.body.message).toEqual('User Updated Successfully');
-          done();
-        });
-    });
+  it('It should Update a User', (done) => {
+    request
+      .patch(mocks.baseUrlUpdateProfile)
+      .set('authorization', userToken)
+      .send(mocks.editProfile)
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.statusCode).toEqual(200);
+        expect(res.body.message).toEqual('User Updated Successfully');
+        done();
+      });
   });
 });

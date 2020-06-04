@@ -12,7 +12,7 @@ export const findUser = async (item) => {
     }
   };
   if (validator.isUUID(item)) {
-    where = { where: { id: item } }; 
+    where = { where: { id: item } };
   }
   const user = await User.findOne(where);
   return user;
