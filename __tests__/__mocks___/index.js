@@ -20,11 +20,7 @@ export const editProfile = {
   accountNumber: '08064839273',
   bankName: 'GT Bank',
   country: 'ghana',
-  address: '23 oduwaye lagos',
   phone: '0344652114',
-  confirmationType: 'EMAIL',
-  country: 'Nigeria'
-
 };
 
 export const emptyName = {
@@ -56,8 +52,8 @@ export const conflict = {
 };
 
 export const loginUser = {
-  username: 'abteezy@gmail.com',
-  password: 'qwertyQ123@'
+  username: 'dreezyy@hotmail.com',
+  password: 'qwerte@123wwd'
 };
 
 export const wrongLoginUser = {
