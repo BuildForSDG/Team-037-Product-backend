@@ -54,8 +54,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   farmLand.associate = (models) => {
     const { User, farmProducts } = models;
-    farmLand.belongsTo(User, { foreignKey: 'user_id' });
-    farmLand.hasMany(farmProducts, { foreignKey: 'id' });
+    farmLand.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+    farmLand.hasMany(farmProducts, { foreignKey: 'id', onDelete: 'CASCADE' });
   };
   return farmLand;
 };

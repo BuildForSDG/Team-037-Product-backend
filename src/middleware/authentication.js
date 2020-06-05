@@ -9,7 +9,7 @@ export const authenticationSchema = Joi.object({
   email: email.required(),
   password,
   phone,
-  userType: list(['farmer', 'sponsor', 'user', 'admin', 'super_admin'], 'userType'),
+  userType: list(['farmer', 'sponsor', 'buyer', 'admin', 'super_admin'], 'userType'),
   country: Joi.string(),
   imageUrl: Joi.string().uri(),
   state: Joi.string(),
@@ -35,7 +35,8 @@ export const editUserProfileSchema = Joi.object({
   dateOfBirth: Joi.string(),
   accountName: Joi.string(),
   accountNumber: Joi.string(),
-  bankName: Joi.string()
+  bankName: Joi.string(),
+  userType: list(['farmer', 'sponsor', 'buyer', 'admin', 'super_admin'], 'userType')
 });
 
 export const loginSchema = Joi.object({

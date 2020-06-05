@@ -15,9 +15,6 @@ describe('FARM PRODUCT API', () => {
       .send(mocks.farmerLogin)
       .end((err, res) => {
         farmerToken = res.body.jwtToken;
-        console.log('>>>>>>', farmerToken);
-        console.log('>>>>>>res', res);
-
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.message).toEqual(LOGIN_SUCCESS);
@@ -33,7 +30,7 @@ describe('FARM PRODUCT API', () => {
         if (err) done(err);
         expect(res.statusCode).toEqual(201);
         expect(res.body.message).toEqual(PRODUCT_SUCCESS);
-        done()
+        done();
       });
   });
 });
