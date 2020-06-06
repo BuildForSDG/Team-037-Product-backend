@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import app from '../src';
 import * as mocks from './__mocks___';
 import {
-  SUCCESS, ALREADY_EXIST, LOGIN_SUCCESS, INVALID_USER, UPDATE_USER,SERVER_ERROR_MESSAGE
+  SUCCESS, LOGIN_SUCCESS, INVALID_USER, UPDATE_USER,
 } from '../src/utils/constant';
 
 let userToken;

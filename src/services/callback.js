@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const callback = (accessToken, refreshToken, profile, done) => {
   const { id, provider } = profile;
   const user = { socialId: id, type: provider };

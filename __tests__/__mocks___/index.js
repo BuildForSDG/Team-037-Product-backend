@@ -1,4 +1,3 @@
-
 export const newUser = {
   firstName: 'bola',
   lastName: 'segun',

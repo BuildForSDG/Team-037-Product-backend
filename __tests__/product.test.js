@@ -3,7 +3,7 @@ import app from '../src';
 import * as mocks from './__mocks___/product';
 
 import {
-  LOGIN_SUCCESS, PRODUCT_SUCCESS, UPDATE_PRODUCT, FIND_PRODUCT, NO_FARM_PRODUCT, UPDATE_USER
+  LOGIN_SUCCESS, PRODUCT_SUCCESS, UPDATE_PRODUCT, FIND_PRODUCT, NO_FARM_PRODUCT,
 } from '../src/utils/constant';
 
 const request = supertest(app);
@@ -15,7 +15,6 @@ describe('FARM PRODUCT API', () => {
       .send(mocks.farmerLogin)
       .end((err, res) => {
         farmerToken = res.body.jwtToken;
-        console.log('>>>>>>edit', farmerToken);
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.message).toEqual(LOGIN_SUCCESS);
@@ -36,7 +35,7 @@ describe('FARM PRODUCT API', () => {
   });
   it('Should edit product details', (done) => {
     request
-      .post(mocks.editUrl)
+      .patch(mocks.editUrl)
       .send(mocks.editProduct)
       .set('authorization', farmerToken)
       .end((err, res) => {

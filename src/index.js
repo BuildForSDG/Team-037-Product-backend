@@ -21,7 +21,7 @@ app.use('/api/v1', routes);
 
 const PORT = process.env.PORT || 8000;
 const server = `http://localhost:${PORT}`;
-
+const isTest = process.env.NODE_ENV === 'test';
 setPassportMiddleware(app);
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to EMPOWER FARMERS API');
@@ -38,6 +38,7 @@ documentation.servers[0].url = process.env.SERVER_URL;
 // setup swagger documentation
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 app.set('port', PORT);
-app.listen(PORT, () => log(`App listening on port ${server}`));
-
+if (!isTest) {
+  app.listen(PORT, () => log(`App listening on port ${server}`));
+}
 export default app;

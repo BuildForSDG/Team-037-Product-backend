@@ -14,12 +14,10 @@ import {
 export const createFarmLand = async (req, res) => {
   try {
     const { id: userId } = req.token;
-
     const farmer = await findUser(userId);
     if (!farmer || farmer === undefined) {
       return res.status(404).json({ status: 404, message: NO_USER });
     }
-
     if (farmer.verified === false) {
       return res.status(401).json({ status: 401, message: NOT_ACTIVATED });
     }
@@ -29,7 +27,7 @@ export const createFarmLand = async (req, res) => {
     const farm = await saveFarm({ ...req.body, userId });
     return res.status(201).json({ status: 201, message: FARM_SUCCESS, data: farm });
   } catch (error) {
-    return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
+    return res.status(500).json({ status: 500, SERVER_ERROR_MESSAGE });
   }
 };
 
@@ -56,7 +54,7 @@ export const updateFarmInformation = async (req, res) => {
     const update = await editFarmLand(farmId, req.body);
     return res.status(200).json({ status: 200, message: UPDATE_FARM, data: update });
   } catch (error) {
-    return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
+    return res.status(500).json({ status: 500, message: error });
   }
 };
 
