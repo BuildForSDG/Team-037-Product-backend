@@ -46,7 +46,6 @@ export const logInUser = async (req, res) => {
           status: 200, message: LOGIN_SUCCESS, user, jwtToken
         });
       }
-
       return res.status(401).json({ status: 401, message: INVALID_USER });
     }
     return res.status(401).json({ status: 401, message: INVALID_USER });

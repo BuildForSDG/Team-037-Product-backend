@@ -67,8 +67,12 @@ export default (sequelize, DataTypes) => {
     {}
   );
   User.associate = (models) => {
-    const { passwordManager } = models;
+    const { passwordManager, farmLand } = models;
     User.hasOne(passwordManager, { foreignKey: 'id' });
+    User.hasMany(farmLand, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE'
+    });
   };
   return User;
 };

@@ -20,11 +20,7 @@ export const editProfile = {
   accountNumber: '08064839273',
   bankName: 'GT Bank',
   country: 'ghana',
-  address: '23 oduwaye lagos',
-  phone: '0344652114',
-  confirmationType: 'EMAIL',
-  country: 'Nigeria'
-
+  phone: '0344652114'
 };
 
 export const emptyName = {

@@ -27,6 +27,7 @@ describe('FARMER API', () => {
       .send(mocks.farmerLogin)
       .end((err, res) => {
         farmerToken = res.body.jwtToken;
+        user = res.body.user;
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.message).toEqual(LOGIN_SUCCESS);
@@ -40,8 +41,8 @@ describe('FARMER API', () => {
       .send(mocks.createFarm)
       .end((err, res) => {
         if (err) done(err);
-        user = res.body.data;
-        if (!user) {
+        const farmData = res.body.data;
+        if (!farmData) {
           expect(res.statusCode).toEqual(401);
           expect(res.body.message).toEqual(NOT_ACTIVATED);
           done();
@@ -54,8 +55,7 @@ describe('FARMER API', () => {
   });
   it('Should edit a farm', (done) => {
     request
-      .patch(`/api/v1/farm/${user.id}/editFarm`
-      )
+      .patch(`/api/v1/farm/${user.id}/editFarm`)
       .set('authorization', farmerToken)
       .send(mocks.updateFarm)
       .end((err, res) => {
@@ -75,6 +75,7 @@ describe('FARMER API', () => {
   it('Should retrieve a farm', (done) => {
     request
       .get(`/api/v1/farm/${user.id}/getOneFarm`)
+      .set('authorization', farmerToken)
       .end((err, res) => {
         if (err) done(err);
         const { data } = res.body;

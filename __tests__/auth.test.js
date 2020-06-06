@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import app from '../src';
 import * as mocks from './__mocks___';
 import {
-  SUCCESS, ALREADY_EXIST, LOGIN_SUCCESS, INVALID_USER, SERVER_ERROR_MESSAGE
+  SUCCESS, LOGIN_SUCCESS, INVALID_USER
 } from '../src/utils/constant';
 
 let userToken;
@@ -63,7 +63,7 @@ describe('EDIT PROFILE', () => {
       .post(mocks.baseUrlLogin)
       .send(mocks.loginUser)
       .end((err, res) => {
-        userToken = res.body.userToken);
+        userToken = res.body.jwtToken;
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.message).toEqual(LOGIN_SUCCESS);

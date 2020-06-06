@@ -6,8 +6,8 @@ export const newFarmer = {
   address: '23 oduwaye lagos',
   phone: '014010401',
   confirmationType: 'EMAIL',
-	userType: 'farmer',
-	country: 'Nigeria'
+  userType: 'farmer',
+  country: 'Nigeria'
 };
 
 export const createFarm = {
@@ -16,7 +16,7 @@ export const createFarm = {
   description: 'We deal with cassava plantation and our end products are garri, pupuru, starch, etc',
   imageUrl: 'https://image.get.com',
   farmType: 'cassava',
-	farmingExperience: '2 years',
+  farmingExperience: '2 years',
   address: '23 weieie',
   country: 'Nigeria'
 };
@@ -24,7 +24,7 @@ export const createFarm = {
 
 export const updateFarm = {
   farmName: 'IyaElewedu',
-  farmSize: '1 hecter',
+  // farm_size: '1 hecter',
   description: 'We deal with cassava plantation and our end products are garri, pupuru, starch, etc',
   imageUrl: 'https://image.get.com',
   farmType: 'cassava',
@@ -38,10 +38,13 @@ export const farmerLogin = {
   password: 'qwerte@123wwd'
 };
 const BASE_URL = '/api/v1';
+const farmId = 'd54d5aaa-f843-4cb1-b725-8cf6b9ea1a39';
 export const signUpURl = `${BASE_URL}/auth/createUser`;
-
-export const farmURL = `${BASE_URL}/farm/createFarm`;
 
 export const loginURL = `${BASE_URL}/auth/signIn`;
 
-export const getUrl = `${BASE_URL}/farm/getOneFarm`;
+export const farmURL = `${BASE_URL}/farm/createFarm`;
+
+export const editURL = `${BASE_URL}/farm/${farmId}/editFarm`;
+
+export const getUrl = `${BASE_URL}/farm/${farmId}/getOneFarm`;

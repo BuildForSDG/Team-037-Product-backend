@@ -7,6 +7,7 @@ export const NO_TOKEN_ERROR = 'Invalid token, You must have confirmed your accou
 export const ACTIVATION_SUCCESS = 'You have successfully verified your account';
 export const NO_USER = 'No user found, please signup';
 export const ONLY_FARMER = 'Sorry you cannot create or edit a farm, only farmer can perform that action';
+export const ONLY_AUTHORIZE = 'You need permission';
 export const NOT_ACTIVATED = 'You need to activate your account before you can create a farm';
 export const FARM_SUCCESS = 'Farm successfully created';
 export const NO_FARM = 'No farm found';
