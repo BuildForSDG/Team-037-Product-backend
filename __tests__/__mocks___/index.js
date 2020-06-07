@@ -1,4 +1,3 @@
-
 export const newUser = {
   firstName: 'bola',
   lastName: 'segun',
@@ -20,7 +19,7 @@ export const editProfile = {
   accountNumber: '08064839273',
   bankName: 'GT Bank',
   country: 'ghana',
-  phone: '0344652114'
+  phone: '0344652114',
 };
 
 export const emptyName = {
@@ -52,8 +51,8 @@ export const conflict = {
 };
 
 export const loginUser = {
-  username: 'abteezy@gmail.com',
-  password: 'qwertyQ123@'
+  username: 'dreezyy@hotmail.com',
+  password: 'qwerte@123wwd'
 };
 
 export const wrongLoginUser = {
