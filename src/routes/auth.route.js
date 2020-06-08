@@ -31,6 +31,4 @@ authRoute.get('/auth/google/callback', passport.authenticate('google', { session
 
 authRoute.patch(`${BASE_URL}/updateUser`, Security.verifyTokenMiddleWare, upload, validateInput(editUserProfileSchema), updateProfile);
 
-authRoute.get(`${BASE_URL}/verify/email`, verifyUserTokenViaEmail);
-
 export default authRoute;

@@ -20,7 +20,7 @@ app.use(cors());
 app.use('/api/v1', routes);
 
 const PORT = process.env.PORT || 8000;
-const server = `http://localhost:${PORT}`;
+const server = process.env.SERVER_URL;
 const isTest = process.env.NODE_ENV === 'test';
 setPassportMiddleware(app);
 app.get('/', (req, res) => {
