@@ -53,9 +53,11 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'farmLands'
   });
   farmLand.associate = (models) => {
-    const { User, farmProducts } = models;
+    const { User, farmProducts, orderHistory } = models;
     farmLand.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
     farmLand.hasMany(farmProducts, { foreignKey: 'id', onDelete: 'CASCADE' });
+    farmLand.hasMany(orderHistory, { foreignKey: 'id', onDelete: 'CASCADE' });
+
   };
   return farmLand;
 };

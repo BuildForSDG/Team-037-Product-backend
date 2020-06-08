@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "cross-env NODE_ENV=test jest",
-    "pretest": "cross-env NODE_ENV=test npm run db:ready",
+    "pretest": "cross-env NODE_ENV=test npm run db:reset",
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
     "lint": "eslint \"src/**/*.js\"",
@@ -23,10 +23,12 @@
     "dev": "cross-env DEBUG=dev nodemon --exec babel-node src",
     "db:ready": "npm-run-all db:undo db:migrate db:seed",
     "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all",
     "db:undo": "sequelize db:migrate:undo:all",
     "db:seed": "sequelize db:seed:all",
-    "undo:seeder": "sequelize db:seed:undo:all && npm run seed",
-    "db:reset": "npm run db:undo && npm run db:migrate"
+    "undo:seeder": "node_modules/.bin/sequelize db:seed:undo:all && npm run seed",
+    "db:reset": "npm run db:migrate:undo && npm run db:migrate && npm run  undo:seeder",
+    "seed": "node_modules/.bin/sequelize db:seed:all"
   },
   "author": {
     "name": "Build For SDG",
@@ -46,6 +48,8 @@
     "@hapi/joi": "^17.1.1",
     "@hapi/joi-date": "^2.0.1",
     "@sendgrid/mail": "^7.1.1",
+    "@wangcch/format-currency": "^1.0.1",
+    "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "bitly": "^7.1.0",
     "cloudinary": "^1.21.0",
@@ -66,7 +70,6 @@
     "nodemailer": "^6.4.6",
     "nodemon": "^2.0.3",
     "npm": "^6.14.5",
-    "npm-run-all": "^4.1.5",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
@@ -75,6 +78,7 @@
     "pg-hstore": "^2.3.3",
     "sendgrid": "^5.2.3",
     "sequelize": "^5.21.8",
+    "shortid": "^2.2.15",
     "supertest": "^4.0.2",
     "swagger-ui-express": "^4.1.4",
     "validator": "^13.0.0",

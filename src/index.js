@@ -19,7 +19,7 @@ app.use(expressUpload({ useTempFiles: true }));
 app.use(cors());
 app.use('/api/v1', routes);
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 9000;
 const server = `http://localhost:${PORT}`;
 const isTest = process.env.NODE_ENV === 'test';
 setPassportMiddleware(app);
