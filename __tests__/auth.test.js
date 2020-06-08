@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import app from '../src';
 import * as mocks from './__mocks___';
 import {
-  SUCCESS, LOGIN_SUCCESS, INVALID_USER
+  SUCCESS, LOGIN_SUCCESS, INVALID_USER, UPDATE_USER,
 } from '../src/utils/constant';
 
 let userToken;
@@ -70,15 +70,15 @@ describe('EDIT PROFILE', () => {
         done();
       });
   });
-  it('It should Update a User', (done) => {
+  it('It should update a user', (done) => {
     request
       .patch(mocks.baseUrlUpdateProfile)
-      .set('authorization', userToken)
       .send(mocks.editProfile)
+      .set('authorization', userToken)
       .end((err, res) => {
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
-        expect(res.body.message).toEqual('User Updated Successfully');
+        expect(res.body.message).toEqual(UPDATE_USER);
         done();
       });
   });
