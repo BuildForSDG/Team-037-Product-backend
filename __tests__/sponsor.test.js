@@ -44,4 +44,16 @@ describe('authenticate Users', () => {
         });
     });
   });
+  describe('GET All FARM', () => {
+    it('It should get all farm', (done) => {
+      request
+        .get(mocks.getAllFarmUrl)
+        .set('authorization', userToken)
+        .end((err, res) => {
+          expect(res.statusCode).toEqual(200);
+          expect(res.body.message).toEqual(GET_FARM);
+          done();
+        });
+    });
+  });
 });

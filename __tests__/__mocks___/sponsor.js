@@ -18,3 +18,4 @@ const BASE_URL = '/api/v1';
 export const signUpUrlSponsor = `${BASE_URL}/auth/createUser`;
 export const loginUrlSponsor = `${BASE_URL}/auth/signIn`;
 export const getOneFarmUrl = `${BASE_URL}/sponsor/${farmId}/listOneFarm`;
+export const getAllFarmUrl = `${BASE_URL}/sponsor/listAllFarm`;
