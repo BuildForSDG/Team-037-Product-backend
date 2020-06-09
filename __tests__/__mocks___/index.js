@@ -65,3 +65,4 @@ const API_VERSION = '/api/v1/auth';
 export const baseUrl = `${API_VERSION}/createUser`;
 export const baseUrlLogin = `${API_VERSION}/signIn`;
 export const baseUrlUpdateProfile = `${API_VERSION}/updateUser`;
+export const getAllFarmProductUrl = '/api/v1/user/listAllFarmProduct';

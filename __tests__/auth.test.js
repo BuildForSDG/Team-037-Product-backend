@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import app from '../src';
 import * as mocks from './__mocks___';
 import {
-  SUCCESS, LOGIN_SUCCESS, INVALID_USER, UPDATE_USER,
+  SUCCESS, LOGIN_SUCCESS, INVALID_USER, UPDATE_USER, FIND_PRODUCT
 } from '../src/utils/constant';
 
 let userToken;
@@ -79,6 +79,17 @@ describe('EDIT PROFILE', () => {
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.message).toEqual(UPDATE_USER);
+        done();
+      });
+  });
+});
+describe('GET All FARM PRODUCT', () => {
+  it('It should get all farm product', (done) => {
+    request
+      .get(mocks.getAllFarmProductUrl)
+      .end((err, res) => {
+        expect(res.statusCode).toEqual(200);
+        expect(res.body.message).toEqual(FIND_PRODUCT);
         done();
       });
   });

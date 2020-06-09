@@ -84,11 +84,18 @@ API Documentation was generated with [Swagger](https://sdg-empower-farmer.heroku
 | GET    | Retrieve  a farm                        | `/api/v1/farm/:farmId/getOneFarm`
 | POST   | Farmer can create a farmProduct         | `/api/v1/product/:farmId/createFarmProduct`
 | PATCH  | Farmer can update a farmProduct         | `/api/v1/product/:productId/editProduct`
+<<<<<<< HEAD
 | GET    | Users can view specific farm product| `/api/v1/product/:farmId/fetchProducts`
 | GET    | User can search a product by name       | `/api/v1/product/searchProduct`
 | POST   | User can buy product                    | `/api/v1/buy/checkout`
 | GET   | Confirms payment after payment has been | `/api/v1/buy/confirm`
             been made
+=======
+| GET    | Sponsor view a farm that belong to farmer| `/api/v1/sponsor/:farmId/listOneFarm`
+| GET    | Sponsor view all farm                    | `/api/v1/sponsor/listAllFarm`
+| GET    | user can view all farm product           | `/api/v1/user/listAllFarmProduct`
+
+>>>>>>> 7f17de358280bfca776ab08cdff4c00d4e55fc19
 
 ### Running Unit Test
 

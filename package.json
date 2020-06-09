@@ -20,7 +20,7 @@
     "test:cover": "jest --coverage",
     "lint": "eslint \"src/**/*.js\"",
     "lint-fix": "eslint --fix \"src/**/*.js\"",
-    "start": "cross-env NODE_ENV=production babel-node src",
+    "start": "babel-node src",
     "dev": "cross-env DEBUG=dev nodemon --exec babel-node src",
     "db:migrate": "sequelize db:migrate",
     "db:migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all",
@@ -44,6 +44,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.9.5",
     "@babel/register": "^7.9.0",
     "@hapi/joi": "^17.1.1",
     "@hapi/joi-date": "^2.0.1",
@@ -85,9 +88,6 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.5",
     "babel-jest": "^25.4.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
