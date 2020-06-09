@@ -96,3 +96,12 @@ export const findProductByProductName = async (item) => {
     return err;
   }
 };
+/* user can view all farmProduct
+*/
+export const findAllFarmProduct = async () => {
+  try {
+    return await farmProducts.findAll();
+  } catch (err) {
+    return err;
+  }
+};

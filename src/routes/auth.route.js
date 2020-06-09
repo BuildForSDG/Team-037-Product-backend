@@ -6,7 +6,8 @@ import {
   createUser,
   logInUser,
   getASpecificUser,
-  updateProfile
+  updateProfile,
+  listAllFarmProduct
 } from '../controller/auth.controller';
 import { validateInput } from '../middleware/schemaValidation';
 import { authenticationSchema, loginSchema, editUserProfileSchema } from '../middleware/authentication';
@@ -16,6 +17,8 @@ import upload from '../middleware/image_upload/index';
 
 const authRoute = express.Router();
 const BASE_URL = '/auth';
+
+authRoute.get('/user/listAllFarmProduct', listAllFarmProduct);
 
 authRoute.post(`${BASE_URL}/createUser`, upload, validateInput(authenticationSchema), emailPhoneValidator, createUser);
 
@@ -30,5 +33,7 @@ authRoute.get('/auth/google', passport.authenticate('google', { session: false, 
 authRoute.get('/auth/google/callback', passport.authenticate('google', { session: false }), socialController);
 
 authRoute.patch(`${BASE_URL}/updateUser`, Security.verifyTokenMiddleWare, upload, validateInput(editUserProfileSchema), updateProfile);
+
+
 
 export default authRoute;

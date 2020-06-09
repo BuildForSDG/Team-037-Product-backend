@@ -5,8 +5,9 @@ import {
 import Security from '../utils/security';
 import accountConfirmationHelper from '../helper/activation/account_confirmation';
 import {
-  SERVER_ERROR_MESSAGE, SUCCESS, LOGIN_SUCCESS, INVALID_USER
+  SERVER_ERROR_MESSAGE, SUCCESS, LOGIN_SUCCESS, INVALID_USER, NO_FARM_PRODUCT_FOUND, FIND_PRODUCT
 } from '../utils/constant';
+import { findAllFarmProduct } from '../services/product';
 import 'dotenv/config';
 
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
@@ -93,3 +94,18 @@ export const getASpecificUser = async (req, res) => {
     return res.status(500).json({ status: 500, message: 'Internal Server Error' });
   }
 };
+
+/* User can view all farm product without login or login
+*/
+export const listAllFarmProduct = async (req, res) => {
+  try {
+    const allFarmProduct = await findAllFarmProduct();
+    if (!allFarmProduct) {
+      return res.status(404).json({ status: 404, message: NO_FARM_PRODUCT_FOUND });
+    }
+    return res.status(200).json({ status: 200, message: FIND_PRODUCT, data: allFarmProduct });
+  } catch (error) {
+    return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });
+  }
+};
+
