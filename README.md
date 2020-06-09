@@ -86,6 +86,7 @@ API Documentation was generated with [Swagger](https://sdg-empower-farmer.heroku
 | PATCH  | Farmer can update a farmProduct         | `/api/v1/product/:productId/editProduct`
 | GET    | Sponsor view a farm that belong to farmer| `/api/v1/sponsor/:farmId/listOneFarm`
 | GET    | Sponsor view all farm                    | `/api/v1/sponsor/listAllFarm`
+| GET    | user can view all farm product           | `/api/v1/user/listAllFarmProduct`
 
 
 ### Running Unit Test

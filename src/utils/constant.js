@@ -18,5 +18,6 @@ export const PRODUCT_SUCCESS = 'Product created successfully';
 export const UPDATE_PRODUCT = 'Product updated successfully';
 export const NO_PRODUCT = 'Product not found';
 export const FIND_PRODUCT = 'Product retrieved successfully';
+export const NO_FARM_PRODUCT_FOUND = 'no farm product found';
 export const NO_FARM_PRODUCT = 'This farm has not uploaded their farm product';
 export const UPDATE_USER = 'User Updated Successfully';
