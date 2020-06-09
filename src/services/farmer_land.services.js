@@ -20,6 +20,15 @@ export const findFarm = async (farmNameOrId) => {
   }
 };
 
+export const findAllFarm = async () => {
+  try {
+    return await farmLand.findAll();
+  } catch (err) {
+    return err;
+  }
+};
+
+
 export const saveFarm = async (item) => {
   try {
     return await farmLand.create({ ...item });
