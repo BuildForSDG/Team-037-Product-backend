@@ -3,9 +3,10 @@ module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('checkoutLists', {
     id: {
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      unique: true
     },
     userId: {
       field: 'user_id',
@@ -28,11 +29,7 @@ module.exports = {
     orderId: {
       field: 'order_id',
       type: Sequelize.UUID,
-      allowNull: false,
-      references: {
-        model: 'order_history',
-        key: 'id'
-      }
+      allowNull: false
     },
     productId: {
       field: 'product_id',
@@ -51,6 +48,14 @@ module.exports = {
       type: Sequelize.ENUM(['pending', 'delivered']),
       defaultValue: 'pending',
       allowNull: false
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE
     }
   }),
   down: (queryInterface) => queryInterface.dropTable('checkoutLists')

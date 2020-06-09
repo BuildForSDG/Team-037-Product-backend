@@ -2,7 +2,7 @@ import { Op } from 'sequelize';
 import validator from 'validator';
 import models from '../database/models';
 
-const { farmLand } = models;
+const { FarmLand } = models;
 
 export const findFarm = async (farmNameOrId) => {
   try {
@@ -14,7 +14,7 @@ export const findFarm = async (farmNameOrId) => {
         where: { id: farmNameOrId }
       };
     }
-    return await farmLand.findOne(where);
+    return await FarmLand.findOne(where);
   } catch (err) {
     return err;
   }
@@ -22,7 +22,7 @@ export const findFarm = async (farmNameOrId) => {
 
 export const saveFarm = async (item) => {
   try {
-    return await farmLand.create({ ...item });
+    return await FarmLand.create({ ...item });
   } catch (err) {
     return err;
   }
@@ -38,7 +38,7 @@ export const editFarmLand = async (farmId, item) => {
       },
       returning: true
     };
-    return farmLand.update(parameter, where);
+    return FarmLand.update(parameter, where);
   } catch (error) {
     return error;
   }

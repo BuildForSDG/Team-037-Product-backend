@@ -3,34 +3,36 @@ module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('order_histories', {
     id: {
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      unique: true,
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4
     },
     userId: {
+      field: 'user_id',
       type: Sequelize.UUID,
       allowNull: false,
       references: {
         model: 'Users',
         key: 'id'
-      },
+      }
     },
     paymentType: {
       field: 'payment_type',
-      type: Sequelize.ENUM(['cardPayment', 'onDelivery', '1done1']),
-      allowNull:
+      type: Sequelize.ENUM(['cardpayment', 'onDelivery', '1done1']),
+      allowNull: false
     },
     transactionId: {
-      type: Sequelize.UUID,
-      allowNull: false,
-      },
+      type: Sequelize.STRING,
+      allowNull: false
+    },
     amount: {
       type: Sequelize.DECIMAL,
       allowNull: false
     },
     totalPayment: {
       type: Sequelize.DECIMAL,
-      allowNull:false
+      allowNull: false
     },
     deliveryFee: {
       type: Sequelize.DECIMAL,
@@ -57,20 +59,21 @@ module.exports = {
       }
     },
     productId: {
+      field: 'product_id',
       type: Sequelize.UUID,
       allowNull: false,
       references: {
         model: 'farmProducts',
         key: 'id'
-      },
+      }
     },
     location: {
       type: Sequelize.STRING,
-      allowNull:false
+      allowNull: false
     },
     deliveryInstruction: {
       type: Sequelize.STRING,
-      allowNull:false
+      allowNull: false
     },
     street: {
       type: Sequelize.STRING,
@@ -79,7 +82,12 @@ module.exports = {
     status: {
       type: Sequelize.STRING,
       defaultValue: 'pending',
-      allowNull: false,
+      allowNull: false
+    },
+    paymentStatus: {
+      type: Sequelize.STRING,
+      defaultValue: 'awaiting-payment',
+      allowNull: false
     },
     createdAt: {
       allowNull: false,

@@ -20,3 +20,5 @@ export const NO_PRODUCT = 'Product not found';
 export const FIND_PRODUCT = 'Product retrieved successfully';
 export const NO_FARM_PRODUCT = 'This farm has not uploaded their farm product';
 export const UPDATE_USER = 'User Updated Successfully';
+export const PAID = 'paid';
+export const CHECKLIST = 'Added to checklist';

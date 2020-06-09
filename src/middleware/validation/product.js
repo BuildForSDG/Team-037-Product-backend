@@ -28,3 +28,24 @@ export const fetchProductSchema = Joi.object({
     .required()
 
 });
+
+
+export const checkoutList = Joi.object({
+  products: Joi.array()
+    .items(
+      Joi.object({
+        farmId: Joi.string().required(),
+        productId: Joi.string().required(),
+        quantity: Joi.number().required(),
+        farmerId: Joi.string().required()
+      })
+    )
+    .min(1)
+    .required(),
+  amount: Joi.number().required(),
+  deliveryFee: Joi.number().required(),
+  location: Joi.string().required(),
+  deliveryInstruction: Joi.string().required(),
+  street: Joi.string().required(),
+  apartment: Joi.string().required()
+});

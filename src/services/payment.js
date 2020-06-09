@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { formatCurrency } from '@wangcch/format-currency';
 
 const getEnv = process.env;
 const headers = {
@@ -16,9 +15,9 @@ export const initializePayment = async (data) => {
       url: `${url}transaction/initialize`,
       data: {
         ...data,
-        callback_url: `${getEnv.BACKEND_URL}/api/v1/buy/confirm`,
+        callback_url: `${getEnv.SERVER_URL}/api/v1/buy/confirm`,
         metadata: {
-          cancel_action: getEnv('PAYMENT_CLOSE_URL')
+          cancel_action: `${getEnv.PAYMENT_CLOSE_URL}`
         }
       },
       headers
@@ -31,10 +30,14 @@ export const initializePayment = async (data) => {
 };
 
 export const verifyTransaction = async (id) => {
-  const { data } = axios({
-    method: 'get',
-    url: `${url}/transaction/verify/${id}`,
-		headers
-	});
-	return data;
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `${url}/transaction/verify/${id}`,
+      headers
+    });
+    return data;
+  } catch (err) {
+    return err;
+  }
 };

@@ -9,20 +9,27 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4
     },
     userId: {
+      field: 'user_id',
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id'
+      }
     },
     farmId: {
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
+      field: 'farm_id'
     },
     orderId: {
-      type: DataTypes.UUID,
-      allowNull: false
+      field: 'order_id',
+      type: DataTypes.UUID
     },
     productId: {
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
+      field: 'product_id'
     },
     quantity: {
       type: DataTypes.INTEGER,
@@ -33,11 +40,14 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'pending',
       allowNull: false
     }
-  }, {});
+  },
+  {
+    tableName: 'checkoutLists'
+  });
   CheckoutList.associate = (models) => {
-    const { farmLand, User } = models;
+    const { FarmLand, User } = models;
     CheckoutList.belongsTo(User, { foreignKey: 'user_id' });
-    CheckoutList.belongsTo(farmLand, { foreignKey: 'farm_id' });
+    CheckoutList.belongsTo(FarmLand, { foreignKey: 'farm_id' });
   };
   return CheckoutList;
 };

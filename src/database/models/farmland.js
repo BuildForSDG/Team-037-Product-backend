@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const farmLand = sequelize.define('farmLand', {
+  const FarmLand = sequelize.define('FarmLand', {
     id: {
       allowNull: false,
       primaryKey: true,
@@ -52,12 +52,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'farmLands'
   });
-  farmLand.associate = (models) => {
-    const { User, farmProducts, orderHistory } = models;
-    farmLand.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
-    farmLand.hasMany(farmProducts, { foreignKey: 'id', onDelete: 'CASCADE' });
-    farmLand.hasMany(orderHistory, { foreignKey: 'id', onDelete: 'CASCADE' });
-
+  FarmLand.associate = (models) => {
+    const { User, FarmProducts, OrderHistory } = models;
+    FarmLand.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+    FarmLand.hasMany(FarmProducts, { foreignKey: 'id', onDelete: 'CASCADE' });
+    FarmLand.hasMany(OrderHistory, { foreignKey: 'id', onDelete: 'CASCADE' });
   };
-  return farmLand;
+  return FarmLand;
 };

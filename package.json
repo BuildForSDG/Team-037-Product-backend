@@ -15,10 +15,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest",
     "pretest": "cross-env NODE_ENV=test npm run db:reset",
-<<<<<<< HEAD
-=======
     "heroku-postbuild": "npm run db:reset",
->>>>>>> 1f3ecaee4c3df015faf014138b76a9504c697497
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
     "lint": "eslint \"src/**/*.js\"",

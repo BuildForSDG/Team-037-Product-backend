@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const orderHistory = sequelize.define('orderHistory', {
+  const OrderHistory = sequelize.define('OrderHistory', {
     id: {
       allowNull: false,
       primaryKey: true,
@@ -9,22 +9,36 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4
     },
     userId: {
+      field: 'user_id',
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id'
+      }
     },
     paymentType: {
-      type: DataTypes.STRING,
-      defaultValue: 'awaiting_payment',
+      field: 'payment_type',
+      type: DataTypes.ENUM(['cardpayment', 'ondelivery', '1done1']),
       allowNull: false
     },
     transactionId: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       allowNull: false
     },
     amount: {
       type: DataTypes.DECIMAL,
       allowNull: false,
       defaultValue: 0
+    },
+    productId: {
+      field: 'product_id',
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: 'farmProducts',
+        key: 'id'
+      }
     },
     totalPayment: {
       type: DataTypes.DECIMAL,
@@ -56,11 +70,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 0
     },
-    productId: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      defaultValue: 0
-    },
     location: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -74,13 +83,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    paymentStatus: {
+      type: DataTypes.STRING,
+      defaultValue: 'awaiting-payment',
+      allowNull: false
+    }
   },
   { tableName: 'order_histories' });
-  orderHistory.associate = (models) => {
-    const { farmProducts, farmLand, User } = models;
-    orderHistory.belongsTo(farmProducts, { foreignKey: 'product_id' });
-    orderHistory.belongsTo(farmLand, { foreignKey: 'farm_id' });
-    orderHistory.belongsTo(User, { foreignKey: 'user_id' });
+  OrderHistory.associate = (models) => {
+    const {
+      FarmProducts, FarmLand, User, CheckoutList
+    } = models;
+    OrderHistory.belongsTo(FarmProducts, { foreignKey: 'product_id' });
+    OrderHistory.belongsTo(FarmLand, { foreignKey: 'farm_id' });
+    OrderHistory.belongsTo(User, { foreignKey: 'user_id' });
+    OrderHistory.hasMany(CheckoutList, { foreignKey: 'id' });
   };
-  return orderHistory;
+  return OrderHistory;
 };
