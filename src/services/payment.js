@@ -29,6 +29,28 @@ export const initializePayment = async (data) => {
   }
 };
 
+
+export const initializeDonation = async (data) => {
+  try {
+    const { data: response } = await axios({
+      method: 'post',
+      url: `${url}transaction/initialize`,
+      data: {
+        ...data,
+        callback_url: `${getEnv.SERVER_URL}/api/v1/donation/confirm`,
+        metadata: {
+          cancel_action: `${getEnv.PAYMENT_CLOSE_URL}`
+        }
+      },
+      headers
+    });
+    const { data: result } = response;
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const verifyTransaction = async (id) => {
   try {
     const { data } = await axios({
