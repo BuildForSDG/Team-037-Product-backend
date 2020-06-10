@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const farmProducts = sequelize.define('farmProducts', {
+  const FarmProducts = sequelize.define('FarmProducts', {
     id: {
       allowNull: false,
       primaryKey: true,
@@ -48,9 +48,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'farmProducts'
   });
-  farmProducts.associate = (models) => {
-    const { farmLand } = models;
-    farmProducts.belongsTo(farmLand, { foreignKey: 'farm_id' });
+  FarmProducts.associate = (models) => {
+    const { FarmLand, CheckoutList, OrderHistory } = models;
+    FarmProducts.belongsTo(FarmLand, { foreignKey: 'farm_id' });
+    FarmProducts.hasMany(CheckoutList, { foreignKey: 'id' });
+    FarmProducts.belongsTo(OrderHistory, { foreignKey: 'order_id' });
   };
-  return farmProducts;
+  return FarmProducts;
 };

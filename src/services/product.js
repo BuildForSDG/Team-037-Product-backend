@@ -2,7 +2,7 @@ import { Op } from 'sequelize';
 import validator from 'validator';
 import models from '../database/models';
 
-const { farmProducts, farmLand } = models;
+const { FarmProducts, FarmLand } = models;
 
 
 export const findProductById = async (item) => {
@@ -15,14 +15,14 @@ export const findProductById = async (item) => {
         }
       };
     }
-    return await farmProducts.findOne(where);
+    return await FarmProducts.findOne(where);
   } catch (err) {
     return err;
   }
 };
 export const saveProduct = async (item) => {
   try {
-    return await farmProducts.create({ ...item });
+    return await FarmProducts.create({ ...item });
   } catch (err) {
     return err;
   }
@@ -40,7 +40,7 @@ export const updateProduct = async (item, productId) => {
       },
       returning: true
     };
-    return await farmProducts.update(parameter, where);
+    return await FarmProducts.update(parameter, where);
   } catch (error) {
     return error;
   }
@@ -63,12 +63,12 @@ export const findProductByFarmId = async (farmId) => {
       },
       include: [
         {
-          model: farmLand
+          model: FarmLand
         }
       ]
 
     };
-    return await farmProducts.findAll(where);
+    return await FarmProducts.findAll(where);
   } catch (err) {
     return err;
   }
@@ -91,7 +91,7 @@ export const findProductByProductName = async (item) => {
       },
       order: [['createdAt', 'DESC']]
     };
-    return await farmProducts.findAll(where);
+    return await FarmProducts.findAll(where);
   } catch (err) {
     return err;
   }
@@ -100,7 +100,7 @@ export const findProductByProductName = async (item) => {
 */
 export const findAllFarmProduct = async () => {
   try {
-    return await farmProducts.findAll();
+    return await FarmProducts.findAll();
   } catch (err) {
     return err;
   }

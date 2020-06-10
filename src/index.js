@@ -22,10 +22,9 @@ app.use('/api/v1', routes);
 const PORT = process.env.PORT || 8000;
 const server = process.env.SERVER_URL;
 const isTest = process.env.NODE_ENV === 'test';
+
 setPassportMiddleware(app);
-app.get('/', (req, res) => {
-  res.status(200).send('Welcome to EMPOWER FARMERS API');
-});
+
 app.use('/api-docs', routes);
 app.get('/api/v1', (req, res) => {
   res.status(200).json({ message: 'Welcome to EMPOWER FARMERS API' });
