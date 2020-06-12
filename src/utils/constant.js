@@ -23,3 +23,6 @@ export const NO_FARM_PRODUCT = 'This farm has not uploaded their farm product';
 export const UPDATE_USER = 'User Updated Successfully';
 export const PAID = 'paid';
 export const CHECKLIST = 'Added to checklist';
+export const DONATE = 'You have successfully donated, thanks for your generosity';
+export const NO_DONATION = 'Donation not found';
+export const DONATION_FOUND = 'Donation retrieved successfully';

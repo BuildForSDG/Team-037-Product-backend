@@ -22,7 +22,7 @@ export const findFarm = async (farmNameOrId) => {
 
 export const findAllFarm = async () => {
   try {
-    return await farmLand.findAll();
+    return await FarmLand.findAll();
   } catch (err) {
     return err;
   }

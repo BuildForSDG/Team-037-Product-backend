@@ -8,23 +8,27 @@ module.exports = {
       defaultValue: Sequelize.UUIDV4,
       unique: true
     },
-    amount: {
-      type: Sequelize.DOUBLE
-    },
-    description: {
+    transactionId: {
       type: Sequelize.STRING,
-      defaultValue: 'Donation'
-    },
-    email: {
-      type: Sequelize.STRING
-    },
-    phone: {
-      type: Sequelize.STRING
+      allowNull: false
     },
     firstName: {
       type: Sequelize.STRING
     },
     lastName: {
+      type: Sequelize.STRING
+    },
+    amount: {
+      type: Sequelize.DOUBLE
+    },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    email: {
+      type: Sequelize.STRING
+    },
+    phone: {
       type: Sequelize.STRING
     },
     createdAt: {
