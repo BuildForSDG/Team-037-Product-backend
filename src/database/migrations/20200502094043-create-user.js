@@ -38,7 +38,7 @@ module.exports = {
     },
     userType: {
       type: Sequelize.ENUM(['sponsor', 'buyer', 'farmer', 'admin', 'super_admin']),
-      defaultValue: 'buyer'
+      defaultValue: 'sponsor'
     },
     verified: {
       allowNull: false,
