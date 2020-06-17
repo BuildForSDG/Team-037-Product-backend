@@ -38,11 +38,11 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
       paymentType: {
-        type: DataTypes.ENUM(['cardpayment', 'transfer']),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       PaymentStatus: {
-        type: DataTypes,
+        type: DataTypes.STRING,
         allowNull: false,
         defaultValue: 'awaiting-payment'
       }

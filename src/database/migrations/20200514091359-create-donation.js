@@ -31,6 +31,15 @@ module.exports = {
     phone: {
       type: Sequelize.STRING
     },
+    paymentType: {
+      type: Sequelize.ENUM(['cardpayment', 'transfer']),
+      allowNull: false
+    },
+    paymentStatus: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      defaultValue: 'awaiting-payment'
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE
