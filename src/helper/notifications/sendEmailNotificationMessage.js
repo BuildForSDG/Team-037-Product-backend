@@ -8,10 +8,9 @@ accountConfirmationEmailMessage
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 const sendNotificationEmail = async (to, token, data, emailOrSMSType) => {
   let msg;
-
   switch (emailOrSMSType) {
     case 'ACCOUNT SIGNUP VERIFICATION': {
-      const link = `${process.env.BACKEND_URL}${settings.API_ENTRY_POINT}/auth/verify/email?token=${token}`;
+      const link = `${process.env.FRONTEND_URL}/verifyStatus?token=${token}`;
       msg = {
         to,
         from: 'no-reply@buildforsdg.andela.com',
