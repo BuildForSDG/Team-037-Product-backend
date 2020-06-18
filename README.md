@@ -13,7 +13,7 @@ Tech solutions that can help give your local community access to international/a
 
 ## Heroku Deployment
 
-Application was deployed to Heroku. Use public URL [https://sdg-empower-farmer.herokuapp.com/](https://sdg-empower-farmer.herokuapp.com/) with API endpoints.
+Application was deployed to Heroku. Use public URL [https://sdg-empower-farmer.herokuapp.com/](https://sdg-empower-farmer.herokuapp.com/api/v1) with API endpoints.
 
 ## Swagger Documentation
 
