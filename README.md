@@ -13,7 +13,7 @@ Tech solutions that can help give your local community access to international/a
 
 ## Heroku Deployment
 
-Application was deployed to Heroku. Use public URL [https://sdg-empower-farmer.herokuapp.com/](https://sdg-empower-farmer.herokuapp.com/) with API endpoints.
+Application was deployed to Heroku. Use public URL [https://sdg-empower-farmer.herokuapp.com/](https://sdg-empower-farmer.herokuapp.com/api/v1) with API endpoints.
 
 ## Swagger Documentation
 
@@ -29,11 +29,11 @@ API Documentation was generated with [Swagger](https://sdg-empower-farmer.heroku
 
 ### Clone
 
-* Clone this project to your local machine `https://github.com/allebd/swapi.git`
+* Clone this project to your local machine `https://github.com/BuildForSDG/Team-037-Product-backend.git`
   > Run the command below
 
 ```shell
-   git clone https://github.com/allebd/swapi.git
+   git clone https://github.com/BuildForSDG/Team-037-Product-backend.git
 ```
 
 ### Setup
@@ -84,17 +84,16 @@ API Documentation was generated with [Swagger](https://sdg-empower-farmer.heroku
 | GET    | Retrieve  a farm                        | `/api/v1/farm/:farmId/getOneFarm`
 | POST   | Farmer can create a farmProduct         | `/api/v1/product/:farmId/createFarmProduct`
 | PATCH  | Farmer can update a farmProduct         | `/api/v1/product/:productId/editProduct`
-| GET    | U sers can view specific farm product| `/api/v1/product/:farmId/fetchProducts`
+| GET    | Users can view specific farm product    |  `/api/v1/product/:farmId/fetchProducts`
 | GET    | User can search a product by name       | `/api/v1/product/searchProduct`
 | POST   | User can buy product                    | `/api/v1/buy/checkout`
-| GET   | Confirms payment after payment has been  | `/api/v1/buy/confirm`
-            been made
+| GET    | Confirms payment after payment has been made | `/api/v1/buy/confirm`
 | GET    | Sponsor view a farm that belong to farmer| `/api/v1/sponsor/:farmId/listOneFarm`
 | GET    | Sponsor view all farm                    | `/api/v1/sponsor/listAllFarm`
 | GET    | user can view all farm product           | `/api/v1/user/listAllFarmProduct`
  POST    | User can donate wether login or not      | `/api/v1/donation/donate`
  GET     | Admin can view a single donation         | `/api/v1/donation/:donationId/find-donation`
- GET     | Admin can view al donation         | `/api/v1/donation/findAll`
+ GET     | Admin can view al donation               | `/api/v1/donation/findAll`
 
 
 ### Running Unit Test
