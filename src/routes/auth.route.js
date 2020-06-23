@@ -7,7 +7,8 @@ import {
   logInUser,
   getASpecificUser,
   updateProfile,
-  listAllFarmProduct
+  listAllFarmProduct,
+  logOut
 } from '../controller/auth.controller';
 import { validateInput } from '../middleware/schemaValidation';
 import { authenticationSchema, loginSchema, editUserProfileSchema } from '../middleware/authentication';
@@ -34,6 +35,7 @@ authRoute.get('/auth/google/callback', passport.authenticate('google', { session
 
 authRoute.patch(`${BASE_URL}/updateUser`, Security.verifyTokenMiddleWare, upload, validateInput(editUserProfileSchema), updateProfile);
 
+authRoute.get(`${BASE_URL}/logout`, logOut);
 
 
 export default authRoute;

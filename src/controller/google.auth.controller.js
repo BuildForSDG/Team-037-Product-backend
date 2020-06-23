@@ -27,27 +27,21 @@ const socialController = async (req, res) => {
       dbUser = await User.create(userData);
     }
     const {
-      socialId, name, lastName, email, verified, id
+      socialId, firstName, lastName, email, verified, id, imageUrl
     } = dbUser;
     const payload = {
       socialId,
-      name,
+      firstName,
       lastName,
       email,
       verified,
+      imageUrl,
       token: await generateNewToken({ id })
     };
-    // const token = authHelper(payload);
-    // return res.send(`${req.user}?token=${token}`);
-    return res.status(200).json({
-      success: true,
-      message: 'User successfully login',
-      data: payload
-      // token
-    });
-    // return res.redirect('https://twitter.com/ore_kolade');
+    const token = await generateNewToken(payload);
+    return res.redirect(`${process.env.FRONTEND_URL}?token=${token}`);
   } catch (e) {
-    return res.status(500).send({ status: e, message: SERVER_ERROR_MESSAGE });
+    return res.redirect(`${process.env.FRONTEND_URL}`);
   }
 };
 
