@@ -21,7 +21,6 @@ export const createUser = async (req, res) => {
     await accountConfirmationHelper(confirmationType, user, 'ACCOUNT SIGNUP VERIFICATION');
 
     const jwtToken = await Security.generateNewToken({ id, email, userType });
-
     return res.status(201).json({
       status: 201, message: SUCCESS, user, jwtToken
     });
@@ -33,9 +32,16 @@ export const createUser = async (req, res) => {
 export const logInUser = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await findUser(username);
-    if (user) {
-      const isValidPassword = await Security.comparePassword(password, user.id);
+    const validUser = await findUser(username);
+    const { dataValues } = validUser;
+    const { id, ...userDetails } = dataValues;
+    const user = {
+      id,
+      token: await Security.generateNewToken({ id }),
+      ...userDetails
+    };
+    if (validUser) {
+      const isValidPassword = await Security.comparePassword(password, id);
       if (isValidPassword) {
         const jwtToken = await Security.generateNewToken({
           id: user.id,
@@ -65,12 +71,48 @@ export const updateProfile = async (req, res) => {
         message: 'User does not exist'
       });
     }
-
     const profile = await editProfile(id, req.body);
+    const {
+      socialId,
+      firstName,
+      lastName,
+      email,
+      verified,
+      imageUrl,
+      country,
+      state,
+      city,
+      address,
+      phone,
+      dateOfBirth,
+      accountName,
+      accountNumber,
+      bankName,
+      userType
+    } = profile[1][0];
+    const payload = {
+      socialId,
+      firstName,
+      lastName,
+      email,
+      verified,
+      imageUrl,
+      country,
+      state,
+      city,
+      address,
+      phone,
+      dateOfBirth,
+      accountName,
+      accountNumber,
+      bankName,
+      userType,
+      token: await Security.generateNewToken({ id })
+    };
     return res.status(200).json({
       status: 200,
       message: 'User Updated Successfully',
-      data: profile
+      data: payload
     });
   } catch (error) {
     return res.status(500).json({ status: 500, message: SERVER_ERROR_MESSAGE });

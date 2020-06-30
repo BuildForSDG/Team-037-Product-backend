@@ -53,7 +53,7 @@ export const updateUser = async (updateVerify, type, userId) => {
 
 export const editProfile = async (userId, body) => {
   try {
-    const where = { where: { id: userId }, returning: true };
+    const where = { where: { id: userId }, returning: true, raw: true };
     const userData = await User.update(body, where);
     return userData;
   } catch (error) {

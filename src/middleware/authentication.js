@@ -28,7 +28,7 @@ export const editUserProfileSchema = Joi.object({
   lastName: name('lastName'),
   phone,
   country: Joi.string(),
-  imageUrl: Joi.string().uri(),
+  imageUrl: Joi.string(),
   state: Joi.string(),
   address: Joi.string(),
   city: Joi.string(),

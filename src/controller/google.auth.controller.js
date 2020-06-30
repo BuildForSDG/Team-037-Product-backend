@@ -27,7 +27,23 @@ const socialController = async (req, res) => {
       dbUser = await User.create(userData);
     }
     const {
-      socialId, firstName, lastName, email, verified, id, imageUrl
+      socialId, 
+      firstName, 
+      lastName, 
+      email, 
+      verified, 
+      id, 
+      imageUrl,
+      country,
+      state,
+      city,
+      address,
+      phone,
+      dateOfBirth,
+      accountName,
+      accountNumber,
+      bankName,
+      userType
     } = dbUser;
     const payload = {
       socialId,
@@ -36,6 +52,16 @@ const socialController = async (req, res) => {
       email,
       verified,
       imageUrl,
+      country,
+      state,
+      city,
+      address,
+      phone,
+      dateOfBirth,
+      accountName,
+      accountNumber,
+      bankName,
+      userType,
       token: await generateNewToken({ id })
     };
     const token = await generateNewToken(payload);

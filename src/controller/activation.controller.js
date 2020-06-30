@@ -46,7 +46,6 @@ export const activateUserViaToken = async (req, res) => {
 export const verifyUserTokenViaEmail = async (req, res) => {
   try {
     const { token } = req.query;
-
     const userToken = await findActivationToken(token);
 
     if (userToken === false || !userToken) {
@@ -55,7 +54,6 @@ export const verifyUserTokenViaEmail = async (req, res) => {
         message: NO_TOKEN_ERROR
       });
     }
-
     const user = await findUser(userToken.userId);
     if (user === undefined || !user) {
       return res.status(404).json({ status: 404, message: 'User not found' });
