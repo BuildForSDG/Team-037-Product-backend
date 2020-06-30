@@ -107,7 +107,7 @@ API Documentation was generated with [Swagger](https://sdg-empower-farmer.heroku
 ## Authors
 
 [Joshua Lugada - Mentor]
-[kolade ore - TTL](https://github.com/koladeore)
+[ore kolade - TTL](https://github.com/koladeore)
 [Adekeye Gabriel - BACKEND-DEVELOPER](https://github.com/teezyfortune)
 [MrDannie - BACKEND-DEVELOPER](https://github.com/MrDannie)
 [Tasiu Kwaplong Saeed - BACKEND-DEVELOPER](https://github.com/tasiukwaplong)
